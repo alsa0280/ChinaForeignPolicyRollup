@@ -1,0 +1,157 @@
+[
+  {
+    "id": "D01",
+    "name": "Canadian merchandise trade statistical hub",
+    "url": "https://www.statcan.gc.ca/en/subjects-start/international_trade",
+    "language": "en/fr",
+    "proposed_cadence": "monthly_release",
+    "purpose": "Baseline Canadian origin, partner and product exposure; verify release timing.",
+    "collection_method": "to_be_tested",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D02",
+    "name": "Current CIMT dataset catalogue",
+    "url": "https://open.canada.ca/data/en/dataset/2909a648-5753-4924-878a-b069392d9cde?res_page=1",
+    "language": "en/fr",
+    "proposed_cadence": "monthly_release",
+    "purpose": "Find the current export data resource; do not treat trade totals as deals.",
+    "collection_method": "to_be_tested",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D03",
+    "name": "CSRC administrative permission notices",
+    "url": "https://www.csrc.gov.cn/csrc/bsfw/",
+    "language": "zh",
+    "proposed_cadence": "daily",
+    "purpose": "Licences, filings and permissions. Resolve exact Canadian applicant and legal entity.",
+    "collection_method": "to_be_tested",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D04",
+    "name": "China Government Procurement Network",
+    "url": "https://www.ccgp.gov.cn/",
+    "language": "zh",
+    "proposed_cadence": "daily",
+    "purpose": "Qualified procurement discovery; screen product, foreign supplier eligibility and value.",
+    "collection_method": "to_be_tested",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D05",
+    "name": "Canpotex newsroom",
+    "url": "https://www.canpotex.com/news/",
+    "language": "en",
+    "proposed_cadence": "daily",
+    "purpose": "Current procurement and sales updates; retain event date.",
+    "collection_method": "to_be_tested",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D06",
+    "name": "Pembina releases",
+    "url": "https://www.pembina.com/media-centre/news-releases",
+    "language": "en",
+    "proposed_cadence": "daily",
+    "purpose": "LNG and LPG project stages, capacity and company updates.",
+    "collection_method": "to_be_tested",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D07",
+    "name": "Canadian Solar releases",
+    "url": "https://investors.canadiansolar.com/news-releases",
+    "language": "en",
+    "proposed_cadence": "daily",
+    "purpose": "Non US contracts; test Canadian value and production origin.",
+    "collection_method": "to_be_tested",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D08",
+    "name": "SEFE releases",
+    "url": "https://www.sefe.eu/en/media/newsroom/press-releases/",
+    "language": "en/de",
+    "proposed_cadence": "daily",
+    "purpose": "Partner confirmation and LNG contract stage changes.",
+    "collection_method": "to_be_tested",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D09",
+    "name": "CIPS participants",
+    "url": "https://www.cips.com.cn/kjjqgsyyingw/index/index.shtml",
+    "language": "en/zh",
+    "proposed_cadence": "weekly",
+    "purpose": "Participation is infrastructure context, not a Canadian transaction.",
+    "collection_method": "to_be_tested",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D10",
+    "name": "NAFMII Panda bond resources",
+    "url": "https://www.nafmii.org.cn/englishnew/overseasparticipation/pandabond/resources/",
+    "language": "en/zh",
+    "proposed_cadence": "weekly",
+    "purpose": "Bond access and rules; identify an actual Canadian issuer mandate.",
+    "collection_method": "to_be_tested",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D11",
+    "name": "NFRA decisions",
+    "url": null,
+    "query": "site:nfra.gov.cn 加拿大 批复 保险 银行",
+    "language": "zh",
+    "proposed_cadence": "daily",
+    "purpose": "Find financial institution permissions.",
+    "collection_method": "search_then_verify_underlying_source",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D12",
+    "name": "NMPA decisions",
+    "url": null,
+    "query": "site:nmpa.gov.cn 泽尼达妥单抗 胃食管腺癌",
+    "language": "zh",
+    "proposed_cadence": "daily",
+    "purpose": "Check product and indication specific decisions.",
+    "collection_method": "search_then_verify_underlying_source",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D13",
+    "name": "GACC establishment access",
+    "url": null,
+    "query": "site:customs.gov.cn 加拿大 准入 注册 宠物 牛肉",
+    "language": "zh",
+    "proposed_cadence": "daily",
+    "purpose": "Find protocols, products and establishment permissions.",
+    "collection_method": "search_then_verify_underlying_source",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D14",
+    "name": "Chinese energy buyer procurement",
+    "url": null,
+    "query": "中石油 中石化 中海油 加拿大 采购 长协 液化气",
+    "language": "zh",
+    "proposed_cadence": "daily",
+    "purpose": "Discover buyer announcements and procurement, then resolve entities.",
+    "collection_method": "search_then_verify_underlying_source",
+    "last_successful_collection": null
+  },
+  {
+    "id": "D15",
+    "name": "Provincial and municipal project leads",
+    "url": null,
+    "query": "加拿大 招商 项目 投资 生物医药 苏州",
+    "language": "zh",
+    "proposed_cadence": "daily",
+    "purpose": "Broader investment and company discovery; verify status and Canadian benefit.",
+    "collection_method": "search_then_verify_underlying_source",
+    "last_successful_collection": null
+  }
+]

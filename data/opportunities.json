@@ -1,0 +1,866 @@
+[
+  {
+    "opportunity_id": "E01",
+    "stack": "Energy supply",
+    "title": "LNG Canada Phase 2 and PetroChina execution",
+    "priority": "first_review",
+    "stage": "announced_investment",
+    "public_evidence": "Shell announced the Phase 2 final investment decision on 29 September 2026. Capacity is to rise from 14 to 28 million tonnes a year, with operations expected in the early 2030s. PetroChina holds 15%; partners lift their equity shares.",
+    "opportunity_assessment": "The live file is execution, financing and associated Canadian supply contracts. Any additional China sales would need a separate buyer and volume; the investment decision itself is already made.",
+    "canadian_value_path": "Canadian gas production, construction, Indigenous participation and supplier contracts; distinguish gross project expenditure from Chinese capital actually committed or disbursed.",
+    "proposed_action": "If the proponent identifies a bilateral obstacle, seek a specific PetroChina execution or contracting commitment through the energy dialogue. No request to take the already completed investment decision.",
+    "validation_needed": "Confirm the next unfunded or unsigned package, the Canadian supplier share, responsible Chinese entity, and whether intervention would add anything to normal project execution.",
+    "monitor_triggers": [
+      "capital contribution",
+      "engineering procurement award",
+      "Coastal GasLink milestone",
+      "schedule change",
+      "incremental sales agreement"
+    ],
+    "source_ids": [
+      "S08",
+      "S07"
+    ],
+    "suggested_review_owner": "NRCan and Beijing commercial team",
+    "deadline": null,
+    "quantified_signal": {
+      "value": 14,
+      "unit": "million tonnes per year",
+      "kind": "incremental project capacity",
+      "currency": null
+    },
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "E02",
+    "stack": "Energy supply",
+    "title": "Canadian LPG and butane supply into China through REEF",
+    "priority": "first_review",
+    "stage": "contract_and_expansion",
+    "public_evidence": "AltaGas reported REEF Phase I commissioning expected before the end of Q1 2027 and identified further optimization capacity. Its July 2025 agreement with BASF supplies Canadian butane from 2027 for BASF operations in China. Pembina has separately secured LPG export tolling capacity.",
+    "opportunity_assessment": "Seek additional multi year propane and butane purchase agreements with Chinese petrochemical users or traders against capacity the operators confirm is available. The BASF route demonstrates that a China opportunity can have a Swiss contractual counterparty.",
+    "canadian_value_path": "Western Canadian liquids and Canadian terminal, rail and marketing activity. Separate RIPET in Canada from AltaGas exports through Ferndale in the United States.",
+    "proposed_action": "After supplier validation, seek a purchase or qualification decision from a named buyer for a defined product, specification, volume and delivery period.",
+    "validation_needed": "Obtain available capacity, product specifications, uncommitted volumes, target buyer, pricing basis and contract stage. Existing BASF purchases are a baseline, not new additional revenue.",
+    "monitor_triggers": [
+      "REEF commissioning",
+      "new offtake",
+      "product qualification",
+      "terminal delay",
+      "optimization investment decision"
+    ],
+    "source_ids": [
+      "S09",
+      "S10",
+      "S49",
+      "S54"
+    ],
+    "suggested_review_owner": "NRCan and Beijing commercial team",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "E03",
+    "stack": "Energy supply",
+    "title": "Long term Chinese refinery purchases of Canadian crude",
+    "priority": "first_review",
+    "stage": "existing_trade",
+    "public_evidence": "NRCan reported in September 2026 that China was taking roughly 60% of Trans Mountain seaborne export shipments. This is a share of those shipments, not of total Canadian oil exports.",
+    "opportunity_assessment": "Convert suitable spot relationships into sustained purchases or incremental supply arrangements with Chinese refiners and traders. New west coast infrastructure is a separate, longer horizon file.",
+    "canadian_value_path": "Canadian produced crude exported to non US destinations. Count Canadian origin, destination and incremental netback; an intermediary sale is not necessarily a final Chinese delivery.",
+    "proposed_action": "A buyer specific term supply commitment could support an ask once the seller identifies the commercial decision and available supply.",
+    "validation_needed": "Identify the seller, refinery or trader, grade, volume, delivery window, terminal capacity and price competitiveness. Do not treat an aggregate market share as an unsigned deal.",
+    "monitor_triggers": [
+      "refinery crude qualification",
+      "term purchase agreement",
+      "tanker destination change",
+      "export capacity expansion"
+    ],
+    "source_ids": [
+      "S07",
+      "S47"
+    ],
+    "suggested_review_owner": "NRCan and Beijing commercial team",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "E04",
+    "stack": "Energy supply",
+    "title": "Qinshan CANDU life extension work packages",
+    "priority": "first_review",
+    "stage": "existing_contract",
+    "public_evidence": "In August 2024 Candu Energy, an AtkinsRealis company, announced a mandate with Third Qinshan Nuclear Power Company for design, engineering and procurement supporting life extension of two CANDU reactors.",
+    "opportunity_assessment": "Map subsequent work packages, Canadian components, tooling, training and engineering services. This is a named customer and installed Canadian technology base; incremental awards remain to be established.",
+    "canadian_value_path": "Engineering and equipment work performed in Canada and export receipts, rather than the full Chinese refurbishment programme.",
+    "proposed_action": "If the company confirms a pending package, seek its award or an agreed procurement timetable from the responsible Chinese owner. Preserve independent nuclear licensing decisions.",
+    "validation_needed": "Confirm which packages have already been contracted, amounts and supplier eligibility; validate delivery and export control requirements with the company, NRCan and relevant authorities.",
+    "monitor_triggers": [
+      "procurement package",
+      "supplier award",
+      "refurbishment milestone",
+      "contract amendment",
+      "life extension authorization"
+    ],
+    "source_ids": [
+      "S11"
+    ],
+    "suggested_review_owner": "NRCan and Beijing commercial team",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "E05",
+    "stack": "Energy supply",
+    "title": "Additional uranium supply to Chinese utilities",
+    "priority": "develop",
+    "stage": "historical_contract_baseline",
+    "public_evidence": "Cameco disclosed a supply agreement with China Nuclear International Corporation, a CNNC subsidiary, in October 2023. Its terms and volumes were confidential and already included in Cameco contracted totals.",
+    "opportunity_assessment": "Test demand for additional Canadian origin uranium contracts, including future reload cycles, without assuming that existing commitments leave supply available.",
+    "canadian_value_path": "Canadian mined uranium and Canadian services where origin is verified; Cameco global supply is not automatically Canadian origin.",
+    "proposed_action": "Only a company confirmed additional supply negotiation would support a purchase commitment ask.",
+    "validation_needed": "Check available supply, origin, contract tenor, counterparty credit, safeguards and export requirements. No public incremental contract amount was established in this scan.",
+    "monitor_triggers": [
+      "CNNC procurement",
+      "utility contracting round",
+      "Cameco contract update",
+      "new reactor fuel demand"
+    ],
+    "source_ids": [
+      "S12",
+      "S46"
+    ],
+    "suggested_review_owner": "NRCan and Beijing commercial team",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "E06",
+    "stack": "Energy supply",
+    "title": "Tilbury LNG expansion and China buyer prospects",
+    "priority": "develop",
+    "stage": "approved_project_lead",
+    "public_evidence": "The federal project registry records an impact assessment decision for Tilbury Phase 2 on 21 September 2026. FortisBC public materials invite LNG contracting enquiries. Its 2019 China export agreement with Top Speed Energy is a historical precedent.",
+    "opportunity_assessment": "Determine whether the newly approved expansion has an active China buyer file. Revalidate Top Speed and search for other buyers; the old agreement does not establish current demand or renewal.",
+    "canadian_value_path": "Canadian gas and facility activity; distinguish bunkering and domestic supply from non US exports.",
+    "proposed_action": "No project specific bilateral ask until FortisBC confirms an active buyer negotiation and a government relevant obstacle.",
+    "validation_needed": "Check final investment decision, availability, shipping or container economics, contract duration and whether the 2019 customer relationship remains active.",
+    "monitor_triggers": [
+      "investment decision",
+      "new supply agreement",
+      "Chinese import partner",
+      "export service availability"
+    ],
+    "source_ids": [
+      "S14",
+      "S15",
+      "S50"
+    ],
+    "suggested_review_owner": "NRCan and Vancouver and Beijing commercial teams",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "E07",
+    "stack": "Energy supply",
+    "title": "Ksi Lisims LNG capacity and China portfolio buyers",
+    "priority": "watch",
+    "stage": "hypothesis",
+    "public_evidence": "On 26 October 2026 SEFE announced a definitive agreement for 1 million tonnes annually for 20 years, following its May heads of agreement. The public agreement provides destination flexibility.",
+    "opportunity_assessment": "Ask the developer whether further Chinese or China serving portfolio buyers are being pursued. No new Chinese buyer, ownership interest or free capacity is inferred from the project size.",
+    "canadian_value_path": "Canadian production and project activity, including the Nisgaa partnership; a German buyer with flexible destinations is not a confirmed China sale.",
+    "proposed_action": "No China specific ask identified. Use company validation to determine whether a separate China file exists.",
+    "validation_needed": "Verify the full current contract book, any investment decision, remaining saleable volumes and target buyers. The May document must not be presented as the latest deal stage.",
+    "monitor_triggers": [
+      "new Chinese offtake",
+      "contract book update",
+      "investment decision",
+      "destination evidence"
+    ],
+    "source_ids": [
+      "S13"
+    ],
+    "suggested_review_owner": "NRCan and Beijing commercial team",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "E08",
+    "stack": "Energy supply",
+    "title": "China linked Canadian battery storage business in third markets",
+    "priority": "develop",
+    "stage": "third_country_contract",
+    "public_evidence": "Canadian Solar announced on 6 October 2026 an e STORAGE contract for OX2 in Australia covering a 100 MW and 200 MWh system and a 20 year service agreement. It identifies proprietary software developed by its North American team. Its annual filing identifies substantial manufacturing operations in China.",
+    "opportunity_assessment": "Use this business model to seek further non US project tenders where Canadian engineering, software, project management or services combine with China linked manufacturing.",
+    "canadian_value_path": "Verify Canadian jobs, intellectual property, services and profit retention. Canadian headquarters and imported battery systems do not establish Canadian manufactured exports.",
+    "proposed_action": "No bilateral China ask supported by this Australian contract. A specific partnership or procurement barrier would need company confirmation.",
+    "validation_needed": "Trace the manufacturing entity, Canadian operating work and end customer. Establish whether a China government lever exists at all.",
+    "monitor_triggers": [
+      "third country storage tender",
+      "service contract",
+      "manufacturing allocation",
+      "Canadian work award"
+    ],
+    "source_ids": [
+      "S16",
+      "S55"
+    ],
+    "suggested_review_owner": "TCS Australia with relevant Canadian and China commercial teams",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "enabling"
+  },
+  {
+    "opportunity_id": "F01",
+    "stack": "Food security",
+    "title": "Extend expiring relief for canola meal peas lobster and crab",
+    "priority": "first_review",
+    "stage": "time_limited_market_access",
+    "public_evidence": "China tariff notice 2026 No 2 suspends the additional 100% tariffs on canola meal and peas and 25% tariffs on lobster and crab from 1 March through 31 December 2026. These are suspensions of specified additional duties, not universal zero tariffs.",
+    "opportunity_assessment": "Secure continuity for 2027 sales and Canadian processing or harvesting plans. This is the clearest dated cross stack intervention in the public record.",
+    "canadian_value_path": "Protect non US sales and Canadian value added processing. Recovered trade is not wholly new diversification.",
+    "proposed_action": "Candidate wording: Extend beyond 31 December 2026 the suspension of additional duties on the listed Canadian canola meal, pea, lobster and crab tariff lines, and publish the implementing notice.",
+    "validation_needed": "Recheck for a superseding notice, confirm exact tariff lines and agree the requested duration with AAFC, DFO and industry. No extension is assumed here.",
+    "monitor_triggers": [
+      "renewal notice",
+      "expiry",
+      "product coverage change",
+      "2027 purchase contracts"
+    ],
+    "source_ids": [
+      "S05",
+      "S03"
+    ],
+    "suggested_review_owner": "AAFC and DFO with GAC and Beijing",
+    "deadline": "2026-12-31",
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "F02",
+    "stack": "Food security",
+    "title": "Remove remaining additional duties on Canadian canola oil",
+    "priority": "first_review",
+    "stage": "market_access_barrier",
+    "public_evidence": "The public AAFC China briefing notes that the additional 100% tariff on canola oil remains, while relief applies to seed and meal under different measures.",
+    "opportunity_assessment": "A tariff change could support Canadian crushing and higher value product sales rather than only raw seed exports. Commercial volume must be assessed with Canadian processors.",
+    "canadian_value_path": "Canadian processing margins, plant utilization and oil exports; do not add oil, seed and meal revenue without accounting for the same feedstock.",
+    "proposed_action": "Candidate wording: Remove the additional 100% duty on the specified Canadian canola oil lines and confirm the effective date in an implementing notice.",
+    "validation_needed": "Verify the latest measure, tariff lines, named processors, Chinese buyers and available capacity. The policy action is concrete; no purchase deal is yet verified.",
+    "monitor_triggers": [
+      "canola oil tariff amendment",
+      "crusher capacity",
+      "buyer tender",
+      "refined oil contract"
+    ],
+    "source_ids": [
+      "S04",
+      "S01"
+    ],
+    "suggested_review_owner": "AAFC and Beijing with Canadian processors",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "F03",
+    "stack": "Food security",
+    "title": "Address remaining additional duties on pork and other seafood",
+    "priority": "first_review",
+    "stage": "market_access_barrier",
+    "public_evidence": "AAFC public briefing material records continuing 25% additional duties on pork and pork products and fish or seafood outside the lobster and crab relief.",
+    "opportunity_assessment": "Develop a product and establishment specific market access package with confirmed buyers, rather than a blanket claim that all Canadian seafood tariffs were removed.",
+    "canadian_value_path": "Canadian processors, harvesters and exporters; incremental value depends on supply, tariffs and competing markets.",
+    "proposed_action": "Candidate wording: Remove the additional duties on an agreed list of remaining Canadian pork and fish or seafood products and publish the product coverage and start date.",
+    "validation_needed": "AAFC, DFO and CFIA should confirm live tariff lines, establishment eligibility, commercial demand and the highest value products.",
+    "monitor_triggers": [
+      "product exclusion",
+      "tariff notice",
+      "eligible plant registration",
+      "buyer order"
+    ],
+    "source_ids": [
+      "S04",
+      "S03"
+    ],
+    "suggested_review_owner": "AAFC DFO CFIA and Beijing",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "F04",
+    "stack": "Food security",
+    "title": "Canola seed purchases under the reduced tariff regime",
+    "priority": "develop",
+    "stage": "implemented_market_access",
+    "public_evidence": "MOFCOM final determination 2026 No 14 imposes a 5.9% anti dumping duty from 1 March 2026 for five years. GAC reports a combined applied rate of 14.9%, including the MFN tariff, and approximately C$4 billion in annual exports whose access improves.",
+    "opportunity_assessment": "Translate the improved regime into firm additional or forward purchases from qualified importers and crushers. The C$4 billion figure is market access context, not a newly signed contract.",
+    "canadian_value_path": "Canadian farm and export receipts. Record price, Canadian origin, shipment period and whether sales replace an existing destination.",
+    "proposed_action": "No request to implement the reduction already in force. A named volume purchase could be a later commercial ask.",
+    "validation_needed": "Confirm buyer, exporter, signed volume, quality, shipment and final destination; track competition from other origins and policy changes.",
+    "monitor_triggers": [
+      "new crop tender",
+      "term purchase",
+      "duty review",
+      "origin substitution"
+    ],
+    "source_ids": [
+      "S06",
+      "S03"
+    ],
+    "suggested_review_owner": "AAFC and Beijing commercial team",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "F05",
+    "stack": "Food security",
+    "title": "Convert reopened beef access into eligible shipments",
+    "priority": "develop",
+    "stage": "implemented_market_access",
+    "public_evidence": "GAC confirmed resumed access for 20 registered Canadian establishments from January 2026. CFIA sets product and registration requirements. AAFC describes a separate Chinese beef safeguard with a shared quota for Canada and a 55% additional out of quota duty.",
+    "opportunity_assessment": "Identify buyers and eligible cuts, establish shipments within viable quota and certification conditions, and assess whether additional plant access or quota treatment is commercially valuable.",
+    "canadian_value_path": "Canadian livestock and processing exports. Reopening alone does not guarantee commercially competitive volume.",
+    "proposed_action": "A specific unresolved establishment approval or quota access issue could support an ask after CFIA and exporter validation; do not ask to reopen an already reopened market.",
+    "validation_needed": "Check current establishment list, product eligibility, available shared quota, Chinese importer and supply. The shared quota is not a Canada only allocation.",
+    "monitor_triggers": [
+      "CIFER registration",
+      "quota utilization",
+      "shipment",
+      "product protocol change"
+    ],
+    "source_ids": [
+      "S03",
+      "S36",
+      "S04"
+    ],
+    "suggested_review_owner": "AAFC CFIA and Beijing",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "F06",
+    "stack": "Food security",
+    "title": "Make the pet food reopening operational",
+    "priority": "first_review",
+    "stage": "conflicting_operational_evidence",
+    "public_evidence": "GACC notice 2026 No 16 permits compliant Canadian pet food and CFIA guidance describes revised registration procedures. However, the current CFIA certificate list marks China certificate HA2756 unavailable; an April notice also reports its suspension.",
+    "opportunity_assessment": "Resolve the exact product and certificate impediment, then qualify Canadian producers for orders. Do not report the entire market as operationally open, or infer every pet food category is banned.",
+    "canadian_value_path": "Canadian manufactured value added food. Investor or buyer interest remains unverified.",
+    "proposed_action": "Candidate wording, subject to CFIA confirmation: Complete the outstanding certification or implementation steps for the agreed Canadian pet food protocol and specify eligible products and establishments.",
+    "validation_needed": "CFIA must reconcile certificate availability, ingredient and disease conditions, registration and product coverage with GACC before a shipment or PM ask is advanced.",
+    "monitor_triggers": [
+      "certificate restored",
+      "new certificate",
+      "registered facility",
+      "accepted shipment",
+      "product specific restriction"
+    ],
+    "source_ids": [
+      "S32",
+      "S33",
+      "S34",
+      "S35"
+    ],
+    "suggested_review_owner": "CFIA AAFC and Beijing",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "adjacent"
+  },
+  {
+    "opportunity_id": "F07",
+    "stack": "Food security",
+    "title": "Animal genetics sales following reinstated eligibility",
+    "priority": "develop",
+    "stage": "implemented_market_access",
+    "public_evidence": "GAC and AAFC report restored access for Canadian porcine and bovine genetics from registered facilities. The public announcement does not establish orders or universal facility eligibility.",
+    "opportunity_assessment": "Develop breeding stock or genetic material purchase packages with approved exporters and named Chinese farms or distributors.",
+    "canadian_value_path": "Canadian breeding expertise, products and associated technical services, subject to actual origin and delivery.",
+    "proposed_action": "A pending facility, product or certification decision can become an ask when a named transaction is documented.",
+    "validation_needed": "Obtain current eligible facilities, product and disease conditions, supplier authorization, buyer and order stage. Do not insert unverified company names into a deal.",
+    "monitor_triggers": [
+      "facility reinstatement",
+      "protocol amendment",
+      "purchase order",
+      "genetics tender"
+    ],
+    "source_ids": [
+      "S03",
+      "S04"
+    ],
+    "suggested_review_owner": "AAFC CFIA and Beijing",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "F08",
+    "stack": "Food security",
+    "title": "Future Chinese potash procurement and Canadian supply",
+    "priority": "develop",
+    "stage": "historical_contract_baseline",
+    "public_evidence": "Canpotex publicly documents an agreement with the China potash buying committee for 2023. That dated record establishes a commercial channel but cannot establish a current contract, price or available supply.",
+    "opportunity_assessment": "Determine whether the next Chinese procurement round creates incremental Canadian supply opportunities, longer term contracting or related Canadian logistics investment.",
+    "canadian_value_path": "Canadian potash and logistics exports. Food security benefits do not by themselves prove an incremental Canadian deal.",
+    "proposed_action": "No current contract specific ask identified. Validate any active negotiation with Canpotex before seeking a purchase commitment.",
+    "validation_needed": "Confirm the latest contract cycle, buying entities, uncommitted volumes, transport and price; do not recycle a 2023 benchmark as a 2026 quote.",
+    "monitor_triggers": [
+      "Chinese buying committee announcement",
+      "new term contract",
+      "Canpotex update",
+      "Canadian capacity commitment"
+    ],
+    "source_ids": [
+      "S37"
+    ],
+    "suggested_review_owner": "AAFC NRCan and Beijing commercial team",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "P01",
+    "stack": "Payments, settlement, and investment",
+    "title": "Specific market access files for Canadian financial institutions",
+    "priority": "first_review",
+    "stage": "institutional_channel",
+    "public_evidence": "The Canada China Financial Working Group met on 3 April 2026 with PBOC, NFRA, CSRC and SAFE participation. Canadian finance authorities met Canadian financial institutions. Manulife fund management already has wholly owned status following earlier approvals.",
+    "opportunity_assessment": "Build a verified list of outstanding branch, product, distribution, pension or asset management permissions requested by Canadian firms. Do not propose licences firms already hold.",
+    "canadian_value_path": "Canadian attributable service earnings, intellectual property and employment; distinguish Chinese assets under management from Canadian export revenue.",
+    "proposed_action": "No named pending application was established in the reviewed public record. Finance and firms should supply a specific application, authority and requested procedural decision.",
+    "validation_needed": "Verify the legal entity, current licence, application status, regulator, commercial value and company consent to raise the file.",
+    "monitor_triggers": [
+      "licence application",
+      "branch approval",
+      "product permission",
+      "Financial Working Group outcome"
+    ],
+    "source_ids": [
+      "S18",
+      "S19",
+      "S21"
+    ],
+    "suggested_review_owner": "Finance Canada with Beijing and participating firms",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "P02",
+    "stack": "Payments, settlement, and investment",
+    "title": "Nuvei Payoneer China licence continuity and expansion",
+    "priority": "first_review",
+    "stage": "announced_transaction",
+    "public_evidence": "The June 2026 company announcement describes Nuvei acquisition of Payoneer for approximately US$2.75 billion and identifies Payoneer mainland China online payment licensing. Closing is expected in mid 2027 subject to approvals and other conditions.",
+    "opportunity_assessment": "Determine whether any China permission or change of control process is required and whether the combined platform can expand Canadian attributable cross border business.",
+    "canadian_value_path": "Montreal based platform activity and attributable service earnings. Acquisition equity value is neither Chinese investment into Canada nor incremental Canadian exports.",
+    "proposed_action": "Only if the companies confirm a live China approval file: seek timely consideration of the identified application under normal regulatory requirements.",
+    "validation_needed": "Confirm current closing status, licensed entity, licence scope and any required Chinese decision. The announcement is not proof that a China application is pending.",
+    "monitor_triggers": [
+      "shareholder or regulatory decision",
+      "transaction close",
+      "China licence variation",
+      "new corridor product"
+    ],
+    "source_ids": [
+      "S22"
+    ],
+    "suggested_review_owner": "Finance Canada and TCS with Nuvei and Beijing",
+    "deadline": null,
+    "quantified_signal": {
+      "value": 2750000000,
+      "unit": "USD",
+      "currency": "USD",
+      "kind": "announced acquisition equity value not Canadian benefit"
+    },
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "P03",
+    "stack": "Payments, settlement, and investment",
+    "title": "RMB trade settlement and finance for Canadian exporters",
+    "priority": "develop",
+    "stage": "existing_infrastructure",
+    "public_evidence": "China official reporting records a renewed RMB 200 billion bilateral central bank swap with a five year term in January 2026. The Financial Working Group covers capital flows and financial market issues.",
+    "opportunity_assessment": "Test a limited exporter and bank pilot for invoicing, FX hedging, working capital and settlement, using actual landed costs and payment performance. Existing clearing and bank access must be verified at entity level.",
+    "canadian_value_path": "Trade finance fees, lower verified transaction cost or improved sales conversion. A currency swap ceiling is not a commercial financing commitment or new investment.",
+    "proposed_action": "No request to create the already renewed swap. An identified operational settlement barrier could be raised through the working group.",
+    "validation_needed": "Validate bank capabilities, customer demand, total FX costs, liquidity, convertibility, repatriation, AML and applicable sanctions. Do not presume RMB always saves money.",
+    "monitor_triggers": [
+      "bank product launch",
+      "clearing access change",
+      "capital flow rule",
+      "measured pilot result"
+    ],
+    "source_ids": [
+      "S20",
+      "S18",
+      "S52"
+    ],
+    "suggested_review_owner": "Finance Canada and participating banks",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "P04",
+    "stack": "Payments, settlement, and investment",
+    "title": "Chinese institutional capital for specific Canadian projects",
+    "priority": "develop",
+    "stage": "hypothesis",
+    "public_evidence": "The bilateral roadmap welcomes investment in areas including energy and agriculture. The September Canada Investment Summit announced a C$50 billion CPP Investments and Brookfield Maple Fund initiative; this is not evidence of a Chinese commitment.",
+    "opportunity_assessment": "Test whether a Canadian project sponsor has an investable debt, minority equity or fund participation package suited to a named Chinese institution.",
+    "canadian_value_path": "New capital actually deployed into Canadian productive assets, distinguished from secondary asset transfers, fund targets and worldwide assets under management.",
+    "proposed_action": "No Chinese investor commitment ask without a project, sponsor, amount, instrument and investor interest. Canadian review requirements remain applicable.",
+    "validation_needed": "Confirm fund or project eligibility, capital need, ownership and control, ultimate investor and review implications. A diplomatic roadmap does not waive investment screening.",
+    "monitor_triggers": [
+      "fund commitment",
+      "project finance term sheet",
+      "capital disbursement",
+      "investment review decision"
+    ],
+    "source_ids": [
+      "S01",
+      "S25",
+      "S42"
+    ],
+    "suggested_review_owner": "Invest in Canada Finance ISED and relevant project sponsor",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "P05",
+    "stack": "Payments, settlement, and investment",
+    "title": "Panda bond financing for an eligible Canadian issuer",
+    "priority": "watch",
+    "stage": "hypothesis",
+    "public_evidence": "Bank of China identifies British Columbia among prior sovereign Panda bond clients. NAFMII publishes current market access resources. No active Canadian issue was established in this scan.",
+    "opportunity_assessment": "An issuer could assess onshore RMB financing against its currency needs, swapped funding cost and ability to use proceeds. This is a financing option, not a ready deal.",
+    "canadian_value_path": "Diversified financing sources for a Canadian issuer if proceeds support Canadian activity and economics compare favourably with alternatives.",
+    "proposed_action": "No ask until an issuer elects to proceed and identifies a specific registration, use of proceeds or repatriation question.",
+    "validation_needed": "Obtain issuer mandate, amount, currency risk, total cost, eligibility, permitted proceeds use and regulatory steps. Avoid treating market size as available capital.",
+    "monitor_triggers": [
+      "Canadian issuer mandate",
+      "NAFMII registration",
+      "SAFE rule",
+      "issuance or proceeds transfer"
+    ],
+    "source_ids": [
+      "S24",
+      "S45"
+    ],
+    "suggested_review_owner": "Finance Canada and interested issuer",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "P06",
+    "stack": "Payments, settlement, and investment",
+    "title": "Canadian payments services for Chinese and third market commerce",
+    "priority": "develop",
+    "stage": "existing_partnership_baseline",
+    "public_evidence": "Nuvei announced integration with Alipay+ in 2021 and currently documents supported wallet methods. This establishes an existing distribution route, not a new partnership announcement.",
+    "opportunity_assessment": "Qualify new merchant portfolios or corridors linking Chinese businesses and consumers with Canada and third markets, including Canadian exporter receivables.",
+    "canadian_value_path": "Canadian attributable payment service earnings and verified exporter sales. Tourism receipts and worldwide processed payment volume require separate treatment.",
+    "proposed_action": "A new product, merchant distribution agreement or specific access obstacle would be needed for an ask; routine wallet acceptance alone is not PM level.",
+    "validation_needed": "Check current partner scope, licensed territories, Canadian delivery team, incremental merchant business and dependence on US demand.",
+    "monitor_triggers": [
+      "merchant agreement",
+      "new settlement corridor",
+      "licence scope",
+      "Chinese platform integration"
+    ],
+    "source_ids": [
+      "S23",
+      "S22"
+    ],
+    "suggested_review_owner": "Finance Canada and TCS with relevant firms",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "B01",
+    "stack": "Pharmaceuticals and biotech",
+    "title": "Zymeworks zanidatamab China indication and commercial milestones",
+    "priority": "first_review",
+    "stage": "regulatory_and_royalty_pipeline",
+    "public_evidence": "Zanidatamab received China conditional approval for a biliary tract cancer indication in May 2025. Zymeworks reported China filing acceptance in April 2026 for a gastroesophageal indication and a potential US$15 million BeOne milestone on its approval.",
+    "opportunity_assessment": "Track the additional indication, launch, reimbursement and royalty steps with the companies. The May 2026 update does not prove the indication is still pending today; revalidate against subsequent NMPA and company disclosures.",
+    "canadian_value_path": "Vancouver research and Canadian activity where demonstrated. Zymeworks legal and operating structure means global milestone receipts are not automatically Canadian retained income.",
+    "proposed_action": "No request to approve a medicine irrespective of evidence. A documented procedural, registration or commercial access obstacle could support a narrowly framed action after company and regulator validation.",
+    "validation_needed": "Verify current China decision, contractual milestone conditions, territorial rights, entity receiving revenue and Canadian work. The US$15 million is contingent, not received revenue.",
+    "monitor_triggers": [
+      "NMPA decision",
+      "reimbursement listing",
+      "BeOne milestone",
+      "royalty disclosure",
+      "Canadian research commitment"
+    ],
+    "source_ids": [
+      "S26",
+      "S27"
+    ],
+    "suggested_review_owner": "ISED Health Canada and Beijing life sciences team",
+    "deadline": null,
+    "quantified_signal": {
+      "value": 15000000,
+      "unit": "USD",
+      "currency": "USD",
+      "kind": "contingent milestone for China indication approval"
+    },
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "B02",
+    "stack": "Pharmaceuticals and biotech",
+    "title": "Acuitas lipid nanoparticle platform licensing in China",
+    "priority": "develop",
+    "stage": "current_business_development_signal",
+    "public_evidence": "Vancouver based Acuitas announced presentations at BioChina and the Vaccine Innovation Forum in China in March 2026 covering lipid nanoparticle delivery and vaccine applications.",
+    "opportunity_assessment": "Follow up on company selected Chinese biotech partners for platform licensing, research services and co development. Conference participation is a prospecting signal, not evidence of an announced licence.",
+    "canadian_value_path": "Canadian research, licensing and services with demonstrable retained value and protected intellectual property.",
+    "proposed_action": "No transaction specific ask until Acuitas identifies a partner, asset or platform scope and government relevant obstacle.",
+    "validation_needed": "Confirm current discussions, background IP, ownership of improvements, payment terms, clinical responsibilities and relevant data or research restrictions.",
+    "monitor_triggers": [
+      "licence announcement",
+      "research agreement",
+      "partner selected",
+      "China IND milestone"
+    ],
+    "source_ids": [
+      "S28"
+    ],
+    "suggested_review_owner": "ISED and Beijing and Shanghai life sciences teams",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "B03",
+    "stack": "Pharmaceuticals and biotech",
+    "title": "Candoo Canadian formulation and manufacturing services for Chinese medicines",
+    "priority": "develop",
+    "stage": "operating_canadian_platform",
+    "public_evidence": "Crystal Pharmatech identifies a Toronto Candoo facility and formulation and manufacturing capabilities. Its May 2026 China language material describes the Canadian subsidiary established in 2018 and its role linking Canadian formulation expertise with Chinese drug development.",
+    "opportunity_assessment": "Qualify additional Chinese sponsor contracts for formulation, clinical supply or Canadian manufacturing, and any commercially justified Canadian expansion.",
+    "canadian_value_path": "Work actually performed at the Canadian site, Canadian capital expenditure and local employment. Chinese parent ownership does not eliminate Canadian value, but groupwide capacity is not Canadian capacity.",
+    "proposed_action": "A sponsor confirmed Canadian work package, facility decision or discrete market access requirement could support an ask after validation.",
+    "validation_needed": "Verify facility operating scope and licences, customer commitments, site specific capacity and expansion funding. Website marketing does not establish an investment decision.",
+    "monitor_triggers": [
+      "Canadian sponsor contract",
+      "facility expansion",
+      "manufacturing approval",
+      "Canadian hiring or equipment order"
+    ],
+    "source_ids": [
+      "S29",
+      "S30"
+    ],
+    "suggested_review_owner": "ISED and Toronto and Shanghai commercial teams",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "B04",
+    "stack": "Pharmaceuticals and biotech",
+    "title": "China origin medicines with Canadian development or manufacturing",
+    "priority": "watch",
+    "stage": "hypothesis",
+    "public_evidence": "Henlius and Sandoz announced an August 2026 platform collaboration including rights outside China, with some territories including Canada. The announcement assigns manufacturing and supply to Henlius.",
+    "opportunity_assessment": "Look for different, uncommitted Chinese assets that a Canadian company could license or co develop while anchoring research, trials or manufacturing in Canada. The cited Sandoz assets are already partnered and are not presented as available.",
+    "canadian_value_path": "Canadian development, intellectual property, clinical services or manufacturing rather than merely permission to sell an imported medicine in Canada.",
+    "proposed_action": "No identified Canadian licensee or asset available for a PM ask. Treat as a search thesis.",
+    "validation_needed": "Establish available territorial rights, a Canadian sponsor, upfront versus milestone terms, Canadian work and regulatory route. Check US investor or partner constraints on the actual structure.",
+    "monitor_triggers": [
+      "unpartnered asset",
+      "Canadian licence agreement",
+      "Canadian trial or manufacturing award",
+      "territory rights change"
+    ],
+    "source_ids": [
+      "S31",
+      "S48",
+      "S41"
+    ],
+    "suggested_review_owner": "ISED Health Canada and China life sciences teams",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  },
+  {
+    "opportunity_id": "B05",
+    "stack": "Pharmaceuticals and biotech",
+    "title": "Medical isotope and sterilization supply for Chinese healthcare",
+    "priority": "watch",
+    "stage": "capability_and_demand_lead",
+    "public_evidence": "Nordion publicized participation in the April 2026 INTAC conference in Beijing. The Canadian isotope ecosystem directory identifies Canadian production and related suppliers. No incremental China supply contract is established by those records.",
+    "opportunity_assessment": "Qualify medical isotope, radiopharmaceutical service or sterilization source customers with Canadian producers. Track each isotope, application and manufacturing chain separately.",
+    "canadian_value_path": "Canadian isotope production and processing, services and equipment. A Canadian operating site can have a foreign parent, so retained value must be measured explicitly.",
+    "proposed_action": "No buyer specific ask identified. A confirmed import registration, supply allocation or procurement decision would be required.",
+    "validation_needed": "Confirm buyer demand, isotope and quality requirements, half life and shipping feasibility, production allocation and nuclear export or import permissions.",
+    "monitor_triggers": [
+      "Chinese buyer qualification",
+      "isotope supply agreement",
+      "registration",
+      "Canadian production allocation"
+    ],
+    "source_ids": [
+      "S43",
+      "S44"
+    ],
+    "suggested_review_owner": "NRCan ISED relevant regulators and Beijing life sciences team",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "enabling"
+  },
+  {
+    "opportunity_id": "B06",
+    "stack": "Pharmaceuticals and biotech",
+    "title": "Follow up on the March 2026 Canadian BioBAY company delegation",
+    "priority": "develop",
+    "stage": "mission_pipeline_lead",
+    "public_evidence": "May 2026 Suzhou material carried on Crystal Pharmatech website reports that the Canadian Consul General in Shanghai led nine Canadian biotech businesses to BioBAY in March for business and investor meetings. The text does not identify all participating firms or completed transactions.",
+    "opportunity_assessment": "The Shanghai commercial team may already hold the most useful list of leads, counterparties and follow up milestones. Request a public shareable subset for the student benchmark.",
+    "canadian_value_path": "Depends on the participating firms and proposed work. Delegation size is not deal value or an investment total.",
+    "proposed_action": "No collective ask. Promote only the individual company files that meet the transaction and government action tests.",
+    "validation_needed": "Confirm the event, participants, current discussions, commercial status, Canadian benefit and permission to use any non public details outside GAC.",
+    "monitor_triggers": [
+      "company follow up",
+      "investor term sheet",
+      "licence",
+      "Canadian R&D or manufacturing commitment"
+    ],
+    "source_ids": [
+      "S30"
+    ],
+    "suggested_review_owner": "Shanghai commercial team with ISED and firms",
+    "deadline": null,
+    "quantified_signal": null,
+    "checked_as_of": "2026-10-27",
+    "human_review_status": "unreviewed",
+    "top_ask_approved": false,
+    "incremental_deal_confirmed": false,
+    "stack_fit": "direct"
+  }
+]

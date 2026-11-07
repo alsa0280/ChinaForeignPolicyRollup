@@ -1,0 +1,74 @@
+{
+  "instructions": "Examples only. Expand entity and product queries with Chinese aliases and dated event terms. Recency filters do not replace a historical baseline or event-date checks. Queries should use public neutral descriptions, not internal PM priorities or negotiating positions.",
+  "Energy supply": {
+    "en": [
+      "Canada China LNG offtake PetroChina project update",
+      "AltaGas REEF BASF China butane supply commissioning",
+      "Qinshan CANDU procurement Canadian supplier",
+      "Cameco CNNC uranium supply agreement",
+      "Tilbury LNG China buyer agreement",
+      "Canadian Solar e-STORAGE third country contract Canadian services"
+    ],
+    "zh": [
+      "加拿大 液化天然气 长期 采购 协议 中石油",
+      "加拿大 丙烷 丁烷 进口 合同",
+      "秦山 重水堆 延寿 招标 采购",
+      "加拿大 天然铀 供货 合同"
+    ],
+    "fr": [
+      "Canada Chine énergie contrat approvisionnement investissement"
+    ]
+  },
+  "Food security": {
+    "en": [
+      "China Canada canola meal peas lobster crab tariff extension 2027",
+      "China Canada canola oil pork seafood additional tariffs",
+      "CFIA China pet food HA2756 certificate",
+      "China Canada beef genetics CIFER eligibility"
+    ],
+    "zh": [
+      "加拿大 菜籽粕 豌豆 龙虾 蟹 关税 延长",
+      "加拿大 菜籽油 猪肉 水产品 加征关税",
+      "加拿大 宠物食品 检疫 卫生 证书 注册",
+      "加拿大 牛肉 遗传物质 准入",
+      "加拿大 钾肥 进口 合同 中化"
+    ],
+    "fr": [
+      "Chine Canada accès marché aliments animaux certificat droits"
+    ]
+  },
+  "Payments, settlement, and investment": {
+    "en": [
+      "Canada China Financial Working Group licence Canadian institution",
+      "Nuvei Payoneer China licence regulatory approval",
+      "Canadian exporter RMB settlement trade finance",
+      "Canadian issuer panda bond NAFMII registration"
+    ],
+    "zh": [
+      "加拿大 金融机构 业务 许可 证监会 金融监管总局",
+      "加拿大 跨境支付 人民币 结算 外汇",
+      "加拿大 熊猫债 注册 募集资金",
+      "加拿大 能源 农业 项目 投资 协议"
+    ],
+    "fr": [
+      "Canada Chine services financiers autorisation investissement paiement"
+    ]
+  },
+  "Pharmaceuticals and biotech": {
+    "en": [
+      "Zymeworks BeOne zanidatamab China indication milestone",
+      "Acuitas China licensing lipid nanoparticle",
+      "Candoo Toronto Chinese sponsor formulation manufacturing",
+      "Canadian biotech China licensing Canadian manufacturing"
+    ],
+    "zh": [
+      "泽尼达妥单抗 胃食管腺癌 国家药监局 获批",
+      "加拿大 生物医药 授权 合作 里程碑",
+      "晶云 加拿大 Candoo 制剂 生产 合同",
+      "加拿大 医用同位素 中国 供货 合作"
+    ],
+    "fr": [
+      "Canada Chine biotechnologies licence recherche fabrication partenariat"
+    ]
+  }
+}

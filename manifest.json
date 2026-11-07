@@ -1,0 +1,121 @@
+{
+  "baseline_date": "2026-10-27",
+  "live_monitoring": false,
+  "opportunities": 28,
+  "reference_sources": 55,
+  "discovery_channels": 15,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "e3f91a43d4debc1461bb3578e617af1535c5d97783f114c5332bc56a81f17cfd"
+    },
+    {
+      "path": "VALIDATION.md",
+      "sha256": "6a0d77cfef367a1f12448ae5743aaec2c4b309fad77ff13e9ce491f2c5c7c333"
+    },
+    {
+      "path": "adapters.py",
+      "sha256": "91fa4cb7995e15cfbf71943223219038cc4e3f93fc391ef78adf62d98ca97e46"
+    },
+    {
+      "path": "data/demo_events.jsonl",
+      "sha256": "8d3336a50d145912aca54bad42bb404eacfd63f43762e00430cd7910c18c7fbf"
+    },
+    {
+      "path": "data/discovery_channels.json",
+      "sha256": "c4021bba251ac08539e9f8330a8a63f02c44277bc2236cddcbf9da80aad5f82a"
+    },
+    {
+      "path": "data/entity_aliases.json",
+      "sha256": "f1d01ed7bf1ba4a216ff34a3f6a4b90af0ea1b3b5758171012b676d861be7a43"
+    },
+    {
+      "path": "data/evaluation_cases.jsonl",
+      "sha256": "78efd7694c9da3bd4d8ea43e60a0a87577916689c0c05e0056747893b87bbed9"
+    },
+    {
+      "path": "data/opportunities.csv",
+      "sha256": "e1c08512a548a4833cf993e167985dcbdcd79d644093a0fd57fdf2259fb8e61d"
+    },
+    {
+      "path": "data/opportunities.json",
+      "sha256": "b348ac344d9d88ef7a01698f148d7201b6e002be5a52969231ea4643bfe8dbe0"
+    },
+    {
+      "path": "data/query_examples.json",
+      "sha256": "577ab66b5b76a9ce18352220029a9894d2812b93f1639d22c700ae10fb848a88"
+    },
+    {
+      "path": "data/review_template.csv",
+      "sha256": "89c23b33cb511b7360b088bf9a82592f351cd57cdd1734d23d082950c538a744"
+    },
+    {
+      "path": "data/source_catalog.csv",
+      "sha256": "af85eb8e1ff4de52d238655ce57ae7a2245d572276a951dd5f81634e246b71f8"
+    },
+    {
+      "path": "data/sources.json",
+      "sha256": "c5df9f2a95744db075e962ecf870ba39079452e33bacc33a1674de3a931ad7ac"
+    },
+    {
+      "path": "examples/daily_digest.md",
+      "sha256": "ca7a0cca6cc33546c969f4bc90e76ccd41c1b1e6d5032d071dc5bf5fba00ae07"
+    },
+    {
+      "path": "examples/event_outcomes.json",
+      "sha256": "1c1c908e0dd223bc00c490fdb3880a197c77cbcdea71ea1b6e2565c725562d96"
+    },
+    {
+      "path": "pipeline.py",
+      "sha256": "a749db7081f879da38d3d793a9f0563e440d71d0bc50c30f372c15f45cc80485"
+    },
+    {
+      "path": "prompts/01_extract.md",
+      "sha256": "a8005b903a8b6ee4c23c5acf47b644696f49b53b255509aa5baadb8cfdd6e190"
+    },
+    {
+      "path": "prompts/02_qualify.md",
+      "sha256": "06d75713440491d86ee0011d8a8cf7bda9d4873797ffd084ae697f8784bcd9d9"
+    },
+    {
+      "path": "prompts/03_verify.md",
+      "sha256": "4fb55dae84a8b62333419268f0f0ee3ca789d53c5db31af9368be4995d4d647c"
+    },
+    {
+      "path": "prompts/04_daily_note.md",
+      "sha256": "1e73f190b3b1a31c383c37f69b43880347dd857210e630fa5b82ae5a62d768e7"
+    },
+    {
+      "path": "prompts/05_term_sheet.md",
+      "sha256": "23643ae11e5f138c824c13fe819476f39ef12a78b511b4d27246803858ccff2c"
+    },
+    {
+      "path": "reports/Canada_China_Opportunity_Scan_and_Tool_Blueprint.docx",
+      "sha256": "5f5ab141deab584d16137f0c3256696fe09308126e89d31d9092ae1c77f1cc9d"
+    },
+    {
+      "path": "reports/Canada_China_Opportunity_Scan_and_Tool_Blueprint.pdf",
+      "sha256": "8ff6b4eaceb6eb3c7e39174b83e55203756669eb0860b292d95bf60a4ab79cee"
+    },
+    {
+      "path": "reports/Canada_China_Two_Page_Term_Sheet.docx",
+      "sha256": "ec5bb3a7f961b82e175ee3e2318b5ced7acbd633867db6b81205d3f2691f4c53"
+    },
+    {
+      "path": "reports/Canada_China_Two_Page_Term_Sheet.pdf",
+      "sha256": "372b17805b7220c5d4424a249955379effc07a9e9d88eb6e6e3060302d1e7d59"
+    },
+    {
+      "path": "schemas/extraction.schema.json",
+      "sha256": "adbef710d06601936a3ed466a1ec7ce4d3251e609c3cc1d4a7682df6702dbb22"
+    },
+    {
+      "path": "schemas/register.sql",
+      "sha256": "7d799ee94d4b62b2878b1b56cbf3a3a36563eb9cf882a74834660e800d37787f"
+    },
+    {
+      "path": "tests/test_pipeline.py",
+      "sha256": "46af9d7e0b592ab29e606dc71f18879817aac3ea209c698cd19f2b158b843715"
+    }
+  ]
+}

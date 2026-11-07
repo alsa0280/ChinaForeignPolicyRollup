@@ -1,0 +1,58 @@
+[
+  {
+    "canonical": "PetroChina",
+    "aliases": [
+      "中国石油天然气股份有限公司",
+      "中石油"
+    ],
+    "note": "Keep listed company, parent CNPC and trading subsidiaries distinct."
+  },
+  {
+    "canonical": "China National Nuclear Corporation",
+    "aliases": [
+      "CNNC",
+      "中国核工业集团有限公司",
+      "中核集团"
+    ],
+    "note": "Different from CNOOC; resolve the actual buyer subsidiary CNIC."
+  },
+  {
+    "canonical": "CNOOC",
+    "aliases": [
+      "中国海洋石油集团有限公司",
+      "中海油"
+    ],
+    "note": "Different from CNNC and CNOOC listed subsidiaries."
+  },
+  {
+    "canonical": "BeOne Medicines",
+    "aliases": [
+      "BeiGene",
+      "百济神州"
+    ],
+    "note": "Confirm legal entity and territory; renamed company."
+  },
+  {
+    "canonical": "zanidatamab",
+    "aliases": [
+      "Ziihera",
+      "泽尼达妥单抗",
+      "百赫安"
+    ],
+    "note": "Resolve indication and regulator separately."
+  },
+  {
+    "canonical": "Crystal Pharmatech",
+    "aliases": [
+      "晶云药物"
+    ],
+    "note": "Candoo Pharmatech is its Canadian operating subsidiary; retain separate entity IDs."
+  },
+  {
+    "canonical": "Canpotex",
+    "aliases": [
+      "加钾公司"
+    ],
+    "note": "Verify name against the individual source; do not infer seller from all Canadian potash trade."
+  }
+]

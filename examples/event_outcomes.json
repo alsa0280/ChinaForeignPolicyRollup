@@ -1,0 +1,92 @@
+[
+  {
+    "event": {
+      "opportunity_id": "E07",
+      "dimension": "contract_stage",
+      "event_date": "2026-05-27",
+      "publication_date": "2026-05-27",
+      "value": "heads_of_agreement",
+      "source_id": "S13",
+      "claim": "Historical baseline for replay: a heads of agreement preceded the definitive deal.",
+      "locator": "October announcement reference to earlier heads of agreement",
+      "evidence_kind": "paraphrased_fixture",
+      "source_authority": "company"
+    },
+    "outcome": "new_dimension"
+  },
+  {
+    "event": {
+      "opportunity_id": "E07",
+      "dimension": "contract_stage",
+      "event_date": "2026-10-26",
+      "publication_date": "2026-10-26",
+      "value": "definitive_contract",
+      "source_id": "S13",
+      "claim": "SEFE announced a definitive LNG supply agreement.",
+      "locator": "SEFE 26 October announcement",
+      "evidence_kind": "paraphrased_fixture",
+      "source_authority": "company"
+    },
+    "outcome": "material_change"
+  },
+  {
+    "event": {
+      "opportunity_id": "E07",
+      "dimension": "contract_stage",
+      "event_date": "2026-10-26",
+      "publication_date": "2026-10-26",
+      "value": "definitive_contract",
+      "source_id": "S13",
+      "claim": "Repeated coverage of the same agreement.",
+      "locator": "SEFE 26 October announcement",
+      "evidence_kind": "paraphrased_fixture",
+      "source_authority": "company"
+    },
+    "outcome": "duplicate"
+  },
+  {
+    "event": {
+      "opportunity_id": "E07",
+      "dimension": "contract_stage",
+      "event_date": "2026-05-27",
+      "publication_date": "2026-10-27",
+      "value": "heads_of_agreement",
+      "source_id": "S13",
+      "claim": "Old stage rediscovered in later coverage; do not overwrite current stage.",
+      "locator": "Historical baseline",
+      "evidence_kind": "paraphrased_fixture",
+      "source_authority": "company"
+    },
+    "outcome": "duplicate"
+  },
+  {
+    "event": {
+      "opportunity_id": "F06",
+      "dimension": "legal_permission",
+      "event_date": "2026-02-02",
+      "publication_date": "2026-02-02",
+      "value": "compliant_products_permitted",
+      "source_id": "S34",
+      "claim": "China notice permits compliant Canadian pet food.",
+      "locator": "Notice 2026 No 16 introductory paragraph",
+      "evidence_kind": "paraphrased_fixture",
+      "source_authority": "official"
+    },
+    "outcome": "new_dimension"
+  },
+  {
+    "event": {
+      "opportunity_id": "F06",
+      "dimension": "certificate_status",
+      "event_date": "2026-10-27",
+      "publication_date": "2026-10-27",
+      "value": "HA2756_unavailable",
+      "source_id": "S32",
+      "claim": "Current Canadian listing marks the China certificate unavailable.",
+      "locator": "China section certificate HA2756",
+      "evidence_kind": "paraphrased_fixture",
+      "source_authority": "official"
+    },
+    "outcome": "new_dimension"
+  }
+]
