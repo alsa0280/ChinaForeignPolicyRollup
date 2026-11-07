@@ -15,6 +15,60 @@ python -m unittest discover -s tests -v
 
 The demo replays historical and synthetic test events. Its digest and database are examples, not evidence that any source was scanned today. Live web collection, search API calls, model extraction, automatic entity resolution, review UI, scheduling and delivery are not implemented.
 
+**Note:** On Windows, you may receive the following error: 
+```powershell
+UnicodeDecodeError: 'charmap' codec can't decode byte...
+```
+On Windows, Python reads text files with the legacy `cp1252` encoding by default, but the data files contain non-English characters (for example Chinese company names), which are UTF-8.
+
+**Fix:**
+
+```powershell
+$env:PYTHONUTF8 = "1"
+python -m unittest discover -s tests -v
+python pipeline.py --demo --out demo-output
+```
+
+This only lasts for the current terminal window, so set it again in each new one.
+
+## Optional: Configuration (API keys)
+
+API keys (such as the Brave Search API key) are kept in a local `.env` file.
+
+1. Copy the template:
+   ```powershell
+   cp .env.example .env
+   ```
+2. Open `.env` and paste your own key after `BRAVE_API_KEY=`.
+
+## Directory Structure (starting)
+```
+student-starter/
+├── README.md              
+├── VALIDATION.md          # Client's checks on the kit
+├── manifest.json          # Index of kit files
+├── pipeline.py            # Offline demo pipeline
+├── adapters.py            # Empty live-integration contracts
+├── data/
+│   ├── opportunities.json # 28 seed opportunities (also .csv)
+│   ├── sources.json       # 55 reference sources
+│   ├── source_catalog.csv # Sources with access notes
+│   ├── discovery_channels.json # 15 places for new leads
+│   ├── query_examples.json    # Sample English/Mandarin searches
+│   ├── entity_aliases.json    # English/Chinese company names
+│   ├── demo_events.jsonl      # Six sample news events
+│   ├── evaluation_cases.jsonl # Test scenarios for evaluation
+│   └── review_template.csv    # Blank human review form
+├── prompts/               # AI instructions (extract, qualify, verify, digest, term sheet)
+├── schemas/
+│   ├── register.sql       # Database table definitions
+│   └── extraction.schema.json # Required AI output format
+├── tests/
+│   └── test_pipeline.py   # 12 automated tests
+├── examples/              # Sample digest and outcomes
+└── reports/               # GAC opportunity scan, term sheet
+```
+
 ## Architecture
 
 ```mermaid
