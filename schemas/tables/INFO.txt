@@ -1,0 +1,22 @@
+TABLES USED BY THE n8n WORKFLOW
+===============================
+
+Dynamic data (written by the workflow) lives in n8n data tables:
+  documents -> ai_claims -> event -> current_state     (+ source_health)
+
+Static configuration (edited by people, read by the workflow) lives in
+JSON files in this repo:
+  data/source_registry.json, data/opportunities.json
+
+Data flow:
+  source_registry.json -> fetch -> documents (+ source_health)
+  documents + opportunities.json -> AI -> ai_claims
+  ai_claims (validated claims) -> event (one row per claim)
+  event -> current_state (latest value per opportunity + dimension)
+  current_state changes -> daily change note (output/*.md)
+
+Every n8n data table also gets three automatic columns that are not listed
+in the files below: id (number), createdAt, updatedAt.
+
+The tables are created by n8n/setup_tables.json and emptied by
+n8n/clear_tables.json. The workflow refers to them by name.

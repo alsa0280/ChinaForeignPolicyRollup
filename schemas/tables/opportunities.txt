@@ -1,0 +1,16 @@
+FILE: data/opportunities.json  (the opportunity register seed)
+Purpose: Defines the 28 tracked Canada-China opportunities the AI must match claims to.
+Implementation: static JSON file in the repo, supplied by the client's starter kit and read by the workflow for every article (not an n8n table).
+
+Fields used by the workflow
+  opportunity_id   text   e.g. E01; the only IDs the AI may use
+  title            text   opportunity name
+  stage            text   current stage as known by the client
+  monitor_triggers list   what kinds of news count as a change
+
+Rules
+  - The file has more fields (priority, public evidence, source IDs, etc.);
+    the workflow uses only the four above to build the AI prompt.
+  - Changing or adding an opportunity here changes what the AI looks for.
+    The opportunity_id list is also hard-coded in the AI output schema
+    (Structured Output Parser node) and must be kept in sync.

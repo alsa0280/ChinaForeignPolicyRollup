@@ -1,0 +1,15 @@
+TABLE: source_health
+Purpose: Logs whether each source could be fetched on each run, so failed or silent sources are visible.
+Implementation: n8n data table "source_health" (created by setup_tables; written by "Insert source_health (success)" and "Insert source_health (fail)").
+
+Columns
+  source_id   text    ID of the source in source_registry.json
+  success     text    status of the fetch: "ok", or "unknown" when the request failed
+  error       text    error message from the failed request (empty on success)
+  checked_at  date    when the check ran
+  run_id      number  n8n execution ID, to group rows by run
+
+Rules
+  - One row is added per source per run (success or failure).
+  - Not used for deduplication. Intended for the source-coverage report.
+  - Note: the "success" column holds a status word, not a true/false value.
