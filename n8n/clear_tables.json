@@ -1,0 +1,157 @@
+{
+  "name": "clear_tables",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        240
+      ],
+      "id": "425c590c-c353-4f2c-b47b-1e97fbcf4f07",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "clear",
+        "dataTableId": {
+          "__rl": true,
+          "value": "current_state",
+          "mode": "name"
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        -144
+      ],
+      "id": "60ac5811-c721-4ef4-8908-d11e36a16e22",
+      "name": "Clear current_state table"
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "clear",
+        "dataTableId": {
+          "__rl": true,
+          "value": "event",
+          "mode": "name"
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        48
+      ],
+      "id": "928602a4-2342-4749-a4f3-e9440a8db53b",
+      "name": "Clear event table"
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "clear",
+        "dataTableId": {
+          "__rl": true,
+          "value": "source_health",
+          "mode": "name"
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        240
+      ],
+      "id": "2e8f4137-5e2a-4794-adf5-080c3bb98411",
+      "name": "Clear source_health table"
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "clear",
+        "dataTableId": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "name"
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        432
+      ],
+      "id": "da309d2e-6bdc-4331-9e72-b21755b58ea9",
+      "name": "Clear documents table"
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "clear",
+        "dataTableId": {
+          "__rl": true,
+          "value": "ai_claims",
+          "mode": "name"
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        624
+      ],
+      "id": "590f5e53-9cae-4032-9a0f-4a440d3dac3c",
+      "name": "Clear ai_claims table"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Clear event table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Clear current_state table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Clear documents table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Clear source_health table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Clear ai_claims table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "3af323ac-42a2-492e-b7ad-4adf8c4eae7e",
+  "meta": {
+    "instanceId": "86d52c477a440e9807353990487e44faa1c26d489b108abb8d239344dc7ac7bd"
+  },
+  "nodeGroups": [],
+  "id": "uxB1rOEZIpGCJCku",
+  "tags": []
+}

@@ -1,0 +1,294 @@
+{
+  "name": "setup_tables",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "source_health",
+        "columns": {
+          "column": [
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "error"
+            },
+            {
+              "name": "checked_at",
+              "type": "date"
+            },
+            {
+              "name": "run_id",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        336,
+        224
+      ],
+      "id": "164da889-8e5e-4446-8b87-5dba5ef4d108",
+      "name": "Create source_health table"
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "current_state",
+        "columns": {
+          "column": [
+            {
+              "name": "opportunity_id"
+            },
+            {
+              "name": "dimension"
+            },
+            {
+              "name": "value"
+            },
+            {
+              "name": "event_date",
+              "type": "date"
+            },
+            {
+              "name": "event_id"
+            },
+            {
+              "name": "conflict",
+              "type": "boolean"
+            },
+            {
+              "name": "conflict_value"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        336,
+        416
+      ],
+      "id": "53aec0db-5122-42c5-830d-75dea0157928",
+      "name": "Create current_state table"
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "ai_claims",
+        "columns": {
+          "column": [
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "url"
+            },
+            {
+              "name": "hash"
+            },
+            {
+              "name": "credibility_score",
+              "type": "number"
+            },
+            {
+              "name": "relevance_score",
+              "type": "number"
+            },
+            {
+              "name": "relevance_justification_en"
+            },
+            {
+              "name": "summary_en"
+            },
+            {
+              "name": "claims_json"
+            },
+            {
+              "name": "claims_dropped",
+              "type": "number"
+            },
+            {
+              "name": "analyzed_at",
+              "type": "date"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        336,
+        608
+      ],
+      "id": "484b4854-b35d-4494-acd1-326a01fc101c",
+      "name": "Create ai_claims table"
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "documents",
+        "columns": {
+          "column": [
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "url"
+            },
+            {
+              "name": "fetched_at",
+              "type": "date"
+            },
+            {
+              "name": "status"
+            },
+            {
+              "name": "title"
+            },
+            {
+              "name": "published_at",
+              "type": "date"
+            },
+            {
+              "name": "text"
+            },
+            {
+              "name": "hash"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        336,
+        32
+      ],
+      "id": "34299f8c-02b7-41ac-add9-a34fa9351b3e",
+      "name": "Create documents table"
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "create",
+        "tableName": "event",
+        "columns": {
+          "column": [
+            {
+              "name": "opportunity_id"
+            },
+            {
+              "name": "dimension"
+            },
+            {
+              "name": "value"
+            },
+            {
+              "name": "event_date",
+              "type": "date"
+            },
+            {
+              "name": "claim_en"
+            },
+            {
+              "name": "locator"
+            },
+            {
+              "name": "support_quote"
+            },
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "hash"
+            },
+            {
+              "name": "run_id",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        336,
+        -160
+      ],
+      "id": "9c6e38f7-f73b-41c0-9c97-48eeeab1e132",
+      "name": "Create events table"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        112,
+        224
+      ],
+      "id": "85be4527-ed6b-4d74-89fe-73130a0cee7c",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Create documents table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create source_health table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create current_state table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create events table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create ai_claims table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "b519d444-569e-41dc-87ff-6eb4cd17b267",
+  "meta": {
+    "instanceId": "86d52c477a440e9807353990487e44faa1c26d489b108abb8d239344dc7ac7bd"
+  },
+  "nodeGroups": [],
+  "id": "qKEIuxD1xjxcEFGp",
+  "tags": []
+}
