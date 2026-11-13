@@ -563,7 +563,7 @@
     {
       "parameters": {
         "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"credibility_label\": { \"type\": \"integer\", \"minimum\": 1, \"maximum\": 5 },\n    \"relevance_score\": { \"type\": \"integer\", \"minimum\": 1, \"maximum\": 5 },\n    \"relevance_justification_en\": { \"type\": \"string\" },\n    \"summary_en\": { \"type\": \"string\" },\n    \"claims\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"opportunity_id\": { \"type\": \"string\", \"enum\": [\"E01\",\"E02\",\"E03\",\"E04\",\"E05\",\"E06\",\"E07\",\"E08\",\"F01\",\"F02\",\"F03\",\"F04\",\"F05\",\"F06\",\"F07\",\"F08\",\"P01\",\"P02\",\"P03\",\"P04\",\"P05\",\"P06\",\"B01\",\"B02\",\"B03\",\"B04\",\"B05\",\"B06\"] },\n          \"dimension\": { \"type\": \"string\" },\n          \"value\": { \"type\": \"string\" },\n          \"claim_en\": { \"type\": \"string\" },\n          \"event_date\": { \"type\": \"string\" },\n          \"locator\": { \"type\": \"string\" },\n          \"support_quote\": { \"type\": \"string\" }\n        },\n        \"required\": [\"opportunity_id\",\"dimension\",\"value\",\"claim_en\",\"event_date\",\"locator\",\"support_quote\"]\n      }\n    }\n  },\n  \"required\": [\"credibility_label\",\"relevance_score\",\"relevance_justification_en\",\"summary_en\",\"claims\"]\n}"
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"credibility_label\": { \"type\": \"integer\", \"minimum\": 1, \"maximum\": 5 },\n    \"relevance_score\": { \"type\": \"integer\", \"minimum\": 1, \"maximum\": 5 },\n    \"relevance_justification_en\": { \"type\": \"string\" },\n    \"summary_en\": { \"type\": \"string\" },\n    \"claims\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"opportunity_id\": { \"type\": \"string\", \"enum\": [\"E01\",\"E02\",\"E03\",\"E04\",\"E05\",\"E06\",\"E07\",\"E08\",\"F01\",\"F02\",\"F03\",\"F04\",\"F05\",\"F06\",\"F07\",\"F08\",\"P01\",\"P02\",\"P03\",\"P04\",\"P05\",\"P06\",\"B01\",\"B02\",\"B03\",\"B04\",\"B05\",\"B06\"] },\n          \"dimension\": { \"type\": \"string\" },\n          \"value\": { \"type\": \"string\" },\n          \"claim_en\": { \"type\": \"string\" },\n          \"event_date\": { \"type\":[\"string\", \"null\"] },\n          \"locator\": { \"type\": \"string\" },\n          \"support_quote\": { \"type\": \"string\" }\n        },\n        \"required\": [\"opportunity_id\",\"dimension\",\"value\",\"claim_en\",\"locator\",\"support_quote\"]\n      }\n    }\n  },\n  \"required\": [\"credibility_label\",\"relevance_score\",\"relevance_justification_en\",\"summary_en\",\"claims\"]\n}"
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
@@ -756,7 +756,9 @@
       "name": "Extract from File"
     },
     {
-      "parameters": {},
+      "parameters": {
+        "maxItems": 2
+      },
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
@@ -1975,9 +1977,10 @@
   "active": false,
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate"
+    "binaryMode": "separate",
+    "availableInMCP": true
   },
-  "versionId": "9329db9c-9858-4b89-9733-9f8cff0ce355",
+  "versionId": "d0573a35-7c14-4ef5-a882-91f690e24805",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "86d52c477a440e9807353990487e44faa1c26d489b108abb8d239344dc7ac7bd"
