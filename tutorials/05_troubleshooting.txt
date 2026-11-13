@@ -1,0 +1,43 @@
+05. TROUBLESHOOTING
+===================
+
+"The file ... is not writable / not found / access to the file is not allowed"
+  The repo is not mounted correctly. Check the container has the mount:
+     docker inspect n8n
+  and look for "/home/node/.n8n-files". If missing, redo step 03.
+  File paths in the workflow must start with /home/node/.n8n-files/.
+
+"ECONNREFUSED" or "fetch failed" on the Ollama Model node
+  - Make sure Ollama is running (open the Ollama app).
+  - The credential Base URL must be http://host.docker.internal:11434
+    (not localhost).
+  - Linux: see the notes at the end of 02_install_ollama.txt.
+
+"model ... not found"
+  Run:  ollama pull qwen2.5:7b
+
+AI step is very slow
+  A 7B model on a laptop without a GPU can take several minutes per
+  article. Keep Limit1 at 1 item while testing.
+
+"table already exists" when running setup_tables
+  The tables were already created. Skip it, or run clear_tables to empty them.
+
+A data table node shows "table not found"
+  Tables are looked up by name. Run setup_tables first and check the table
+  names under Overview > Data tables.
+
+No change note is written
+  The note is only built when there are new or changed items. If every claim
+  was a duplicate (or the AI found no claims), nothing new is written. Run
+  clear_tables for a fresh test.
+
+Port 5678 already in use
+  Another n8n is running. Run:  docker ps -a   then   docker rm -f n8n
+  or change the first number: -p 5679:5678 and use http://localhost:5679
+
+Docker says "Cannot connect to the Docker daemon"
+  Open Docker Desktop and wait for "Engine running".
+
+Do NOT commit
+  .env files or API keys (for example the Brave search key). Keep them local.

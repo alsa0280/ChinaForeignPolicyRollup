@@ -1,0 +1,53 @@
+04. IMPORT AND RUN THE WORKFLOWS
+================================
+
+The workflows are in the n8n/ folder of this repo:
+  setup_tables.json         creates the data tables (run once)
+  collection_workflow.json  the main pipeline
+  clear_tables.json         empties all tables (for a fresh start)
+
+A. IMPORT (once per workflow)
+  1. In n8n open Workflows (left menu), then Create workflow.
+  2. Click the "..." menu (top right) > Import from File.
+  3. Choose the .json file from the n8n/ folder.
+  4. Click Save (top right).
+  Repeat for the other two files.
+
+B. CONNECT THE AI MODEL (once)
+  1. Open collection_workflow and double-click the "Ollama Model" node.
+  2. Under Credential, create a new credential:
+       Base URL:  http://host.docker.internal:11434
+  3. Save, then check the model is qwen2.5:7b.
+
+C. CREATE THE TABLES (once per n8n instance)
+  1. Open setup_tables and click "Execute workflow".
+  2. All five nodes should turn green. Check under Data tables (Overview >
+     Data tables) for: documents, source_health, ai_claims, event,
+     current_state.
+  If it says a table already exists, they were already created: skip this.
+
+D. RUN THE MAIN WORKFLOW
+  1. Open collection_workflow and click "Execute workflow".
+  2. Watch the nodes turn green. The first run downloads an article and asks
+     the AI to analyse it; this can take a minute or more.
+  3. By default only the FIRST source in data/source_registry.json is
+     processed. To process more, open the "Limit1" node and raise
+     "Max Items".
+
+E. WHERE THE RESULTS ARE
+  - Change note: output/change_note_<date>_<time>.md in the repo folder.
+    (It is a VALIDATION DRAFT: AI-extracted claims that need human review.)
+  - Tables (Overview > Data tables):
+      documents      the articles fetched
+      source_health  which sources worked or failed
+      ai_claims      the AI's output for each article
+      event          each validated claim
+      current_state  latest value per opportunity and dimension
+
+F. START OVER
+  Open clear_tables and click "Execute workflow". It empties all five tables
+  (the tables remain). Old files in output/ are not deleted.
+
+CONFIG FILES THE WORKFLOW READS (edit in the repo, then re-run)
+  data/source_registry.json   the sources to collect
+  data/opportunities.json     the 28 tracked opportunities

@@ -16,12 +16,15 @@ sources -> fetch -> documents -> LLM claims -> validate -> events -> current_sta
 | `data/samples/` | Sample search results (Brave) |
 | `prompts/`, `schemas/` | Kit prompts and the extraction schema (data contract) |
 | `output/` | Generated change notes (git-ignored) |
+| `tutorials/` | Setup guides (plain text) |
 | `docs/` | Client reports and the original starter-kit README |
 | `reference/` | The original offline Python/SQLite demo, kept for comparison |
 
 The remaining files in `data/` are the original kit's reference data.
 
 ## Run it
+
+Step-by-step guides (Docker, Ollama, n8n, running the workflow) are in `tutorials/`; start with `tutorials/00_START_HERE.txt`. The short version:
 
 1. **Start n8n with the repo mounted** (the workflows read and write `/home/node/.n8n-files`):
    ```

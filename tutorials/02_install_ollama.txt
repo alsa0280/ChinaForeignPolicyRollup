@@ -1,0 +1,27 @@
+02. INSTALL OLLAMA AND THE AI MODEL
+===================================
+
+Ollama runs the language model locally. The workflow uses the model
+qwen2.5:7b (about 4-5 GB download, needs roughly 8 GB of free RAM).
+
+1. Download Ollama from https://ollama.com/download and install it.
+2. Open a NEW PowerShell/Terminal window and download the model:
+
+     ollama pull qwen2.5:7b
+
+3. Check it works:
+
+     ollama run qwen2.5:7b "Say hello"
+
+   Type /bye to leave. Ollama listens on http://localhost:11434.
+
+NOTE FOR n8n
+  n8n runs inside Docker, so it reaches Ollama through the special address
+  http://host.docker.internal:11434  (not localhost). You enter this later,
+  in step 04.
+
+LINUX ONLY
+  Start Ollama listening on all interfaces so the container can reach it:
+     OLLAMA_HOST=0.0.0.0 ollama serve
+  and add  --add-host=host.docker.internal:host-gateway  to the docker run
+  command in step 03.
