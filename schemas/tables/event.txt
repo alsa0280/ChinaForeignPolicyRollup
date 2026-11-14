@@ -1,0 +1,21 @@
+TABLE: event
+Purpose: Holds each validated claim as its own row, giving a history of what sources said about each opportunity.
+Implementation: n8n data table "event" (created by setup_tables; written by the "Insert Event" node after "Explode Claims" and "Dedupe Events").
+
+Columns
+  opportunity_id  text    one of the 28 opportunities (e.g. E01)
+  dimension       text    what aspect changed (e.g. contract_stage); AI-chosen, free text
+  value           text    the reported state of that dimension
+  event_date      date    when it happened, only if the AI gave YYYY-MM-DD; otherwise empty
+  claim_en        text    the claim in English
+  locator         text    where in the article (e.g. "paragraph 3")
+  support_quote   text    exact quote from the article that supports the claim
+  source_id       text    source of the article
+  hash            text    hash of the article (links back to documents / ai_claims)
+  run_id          number  n8n execution ID that created the row
+
+Rules
+  - Flattened version of the claims in ai_claims: one row per validated claim.
+  - A claim is skipped if a row with the same opportunity_id, dimension,
+    value and hash already exists ("Dedupe Events" node).
+  - Feeds current_state.

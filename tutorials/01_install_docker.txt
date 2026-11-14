@@ -1,0 +1,29 @@
+01. INSTALL DOCKER
+==================
+
+WINDOWS
+1. Download Docker Desktop from https://www.docker.com/products/docker-desktop/
+2. Run the installer. Keep "Use WSL 2" ticked if asked.
+3. Restart your computer if the installer asks you to.
+4. Open Docker Desktop and wait until it says "Engine running"
+   (the whale icon in the system tray stops animating).
+5. Check it works. Open PowerShell and run:
+
+     docker --version
+     docker run hello-world
+
+   You should see "Hello from Docker!".
+
+MACOS
+  Download Docker Desktop for your chip (Apple silicon or Intel) from the
+  same page, drag it to Applications, open it, then run the two commands above
+  in Terminal.
+
+LINUX
+  Install Docker Engine from https://docs.docker.com/engine/install/ and run
+  the two commands above. (You may need to add your user to the "docker" group.)
+
+TERMINOLOGY
+  image      the downloaded package (n8n, ready to run)
+  container  a running copy of an image
+  volume     storage that survives when a container is removed

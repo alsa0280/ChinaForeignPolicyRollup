@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 import sqlite3
 
-BASE = Path(__file__).resolve().parent
+BASE = Path(__file__).resolve().parent.parent   # repo root (this file lives in reference/)
 
 def connect(path=':memory:'):
     db = sqlite3.connect(path)
@@ -142,7 +142,7 @@ def main():
     out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
     # Deterministic fresh replay; never overwrite a production database.
     db=connect();seed(db)
-    events=[json.loads(s) for s in (BASE/'data/demo_events.jsonl').read_text().splitlines() if s.strip()]
+    events=[json.loads(s) for s in (BASE/'reference/data/demo_events.jsonl').read_text().splitlines() if s.strip()]
     outcomes=[(e,ingest(db,e,as_of)) for e in events]
     save_health(db,'fixture-demo','S13',True)
     save_health(db,'fixture-demo','S46',False,'simulated HTTP 403')

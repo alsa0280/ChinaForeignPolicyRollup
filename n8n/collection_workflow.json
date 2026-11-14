@@ -1,0 +1,1991 @@
+{
+  "name": "collection_workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        208,
+        -416
+      ],
+      "id": "bf40551c-0858-4e83-a6e4-d3bdb8e35fcf",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        2000,
+        -512
+      ],
+      "id": "70eb9022-2f84-4c48-baa8-a6b41aaf95a4",
+      "name": "HTTP Request",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 4
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.method }}",
+                    "rightValue": "page",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "83116be0-3857-4b00-a4f4-919ec4549a9c"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "method=Page"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 4
+                },
+                "conditions": [
+                  {
+                    "id": "6877e5d3-423e-4190-9543-ce9bac63dcaf",
+                    "leftValue": "={{ $json.method }}",
+                    "rightValue": "rss",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "method=RSS"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.5,
+      "position": [
+        1328,
+        -416
+      ],
+      "id": "8e22abdf-a348-4f46-866c-14af32f8d2ae",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        1776,
+        -224
+      ],
+      "id": "125e2409-e4d9-4b90-afa1-b4e9369ee693",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4bb77f60-8da0-4310-8c24-3a42c9087172",
+              "name": "source_id",
+              "value": "={{ $('Prepare Fetch').item.json.source_id }}",
+              "type": "string"
+            },
+            {
+              "id": "dfcded32-1275-42b4-9243-892330581156",
+              "name": "url",
+              "value": "={{ $('Prepare Fetch').item.json.url }}",
+              "type": "string"
+            },
+            {
+              "id": "ff0d88a6-8b1a-4c8a-8ac3-078f7d2d4d20",
+              "name": "checked_at",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "a01b5170-b883-49af-8925-c55e988b21d2",
+              "name": "run_id",
+              "value": "={{ $execution.id }}",
+              "type": "number"
+            },
+            {
+              "id": "40721009-b5ea-4f04-b7b7-814c4f751320",
+              "name": "status",
+              "value": "unknown",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        2224,
+        -416
+      ],
+      "id": "6aed10d2-017d-46b1-995d-8f29e8694409",
+      "name": "Edit Fields (Error)"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4bb77f60-8da0-4310-8c24-3a42c9087172",
+              "name": "source_id",
+              "value": "={{ $('Prepare Fetch').item.json.source_id }}",
+              "type": "string"
+            },
+            {
+              "id": "dfcded32-1275-42b4-9243-892330581156",
+              "name": "url",
+              "value": "={{ $('Prepare Fetch').item.json.url }}",
+              "type": "string"
+            },
+            {
+              "id": "52b10690-d7df-4cab-bd5e-1bc3269680ec",
+              "name": "data",
+              "value": "={{ $('HTTP Request').item.json.data }}",
+              "type": "string"
+            },
+            {
+              "id": "054b452b-959d-4d1b-b671-11da0a39c954",
+              "name": "status",
+              "value": "ok",
+              "type": "string"
+            },
+            {
+              "id": "036f0a8a-4881-4fc6-82af-eacef41222fe",
+              "name": "fetched_at",
+              "value": "={{ $now }}",
+              "type": "string"
+            },
+            {
+              "id": "292b8f2e-83d6-4564-aac5-5be13992573f",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "045e41e3-812f-4d82-b8f4-94d7c89b5ee1",
+              "name": "published_at",
+              "value": "={{ $json.published_at }}",
+              "type": "string"
+            },
+            {
+              "id": "d97da681-f242-4cf6-85d7-fe3699704bb2",
+              "name": "text",
+              "value": "={{ $json.text.join(\"\\n\") }}",
+              "type": "string"
+            },
+            {
+              "id": "1cb26580-65be-4da2-a54b-ee3b9bda270a",
+              "name": "run_id",
+              "value": "={{ $execution.id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        2672,
+        -608
+      ],
+      "id": "71b8ac93-5dfd-40ab-9ac4-c5abc308c978",
+      "name": "Edit Fields (Success)"
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "title",
+              "cssSelector": "=title"
+            },
+            {
+              "key": "published_at",
+              "cssSelector": "meta[property=\"article:published_time\"]",
+              "returnValue": "attribute",
+              "attribute": "content"
+            },
+            {
+              "key": "text",
+              "cssSelector": "p",
+              "skipSelectors": "nav, footer, aside, script, style",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        2224,
+        -608
+      ],
+      "id": "c0ea2d9e-c07f-4e68-817a-ae9624dd361d",
+      "name": "HTML"
+    },
+    {
+      "parameters": {
+        "value": "={{ $json.text }}",
+        "dataPropertyName": "=hash"
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 2,
+      "position": [
+        2896,
+        -608
+      ],
+      "id": "a4f5ce1f-3529-4c55-b85f-663e7bc546d3",
+      "name": "Crypto"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const raw = ($json.published_at || '').toString().trim();\nlet iso = null;\n\nif (raw) {\n  let dt = DateTime.fromISO(raw);                       // 2026-11-07T14:30:00Z\n  if (!dt.isValid) dt = DateTime.fromRFC2822(raw);      // Sat, 07 Nov 2026 14:30:00 GMT (RSS style)\n  if (!dt.isValid) {                                    // 2026年11月7日, 2026/11/07, 2026.11.07\n    const m = raw.match(/(\\d{4})[年\\/.-](\\d{1,2})[月\\/.-](\\d{1,2})/);\n    if (m) dt = DateTime.fromObject({ year: +m[1], month: +m[2], day: +m[3] });\n  }\n  if (!dt.isValid) {                                    // last resort: JavaScript's own parser\n    const d = new Date(raw);\n    if (!isNaN(d)) dt = DateTime.fromJSDate(d);\n  }\n  iso = dt.isValid ? dt.toISO() : null;\n}\n\nreturn { json: { ...$json, published_at: iso } };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2448,
+        -608
+      ],
+      "id": "ff4febbf-9ffe-4b44-ab47-e47cd5f06ccf",
+      "name": "Parse Dates"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "source_id": "={{ $json.source_id }}",
+            "url": "={{ $json.url }}",
+            "fetched_at": "={{ $json.fetched_at }}",
+            "title": "={{ $json.title }}",
+            "status": "={{ $json.status }}",
+            "published_at": "={{ $json.published_at }}",
+            "text": "={{ $json.text }}",
+            "hash": "={{ $json.hash }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "source_id",
+              "displayName": "source_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "url",
+              "displayName": "url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "fetched_at",
+              "displayName": "fetched_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "published_at",
+              "displayName": "published_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "text",
+              "displayName": "text",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "hash",
+              "displayName": "hash",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3344,
+        -704
+      ],
+      "id": "0fa91c62-6be4-46f1-8e08-c0923aaba019",
+      "name": "Insert document"
+    },
+    {
+      "parameters": {
+        "operation": "rowNotExists",
+        "dataTableId": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "name"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "hash",
+              "keyValue": "={{ $json.hash }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3120,
+        -704
+      ],
+      "id": "819765f7-a1a2-4427-9585-24da85821e97",
+      "name": "If row does not exist"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "daa4134a-ab85-44c5-b25e-77ed271e9e8c",
+              "name": "source_id",
+              "value": "={{ $json.source_id || $('Switch').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "7823d68f-e878-46e9-80b8-c8a886c48dde",
+              "name": "url",
+              "value": "={{ $json.url || $json.link }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        1776,
+        -512
+      ],
+      "id": "af2291e3-8c7e-4703-ab22-66a0055bda34",
+      "name": "Prepare Fetch"
+    },
+    {
+      "parameters": {
+        "maxItems": 3
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        -224
+      ],
+      "id": "ba155d82-6729-4d53-afc4-70b9578db506",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1552,
+        -224
+      ],
+      "id": "e88b5e8b-4942-4de0-8790-8177b1555a60",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "485461c5-9a3d-4279-bc71-4186048df881",
+              "name": "source_id",
+              "value": "={{$('Loop Over Items').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "1aeca28d-327e-45d0-bf04-a5411fb54443",
+              "name": "url",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        2224,
+        -144
+      ],
+      "id": "d8e13f6c-cb54-4dcb-b09b-158548e46935",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Title: {{ $json.title }}\nPublished: {{ $json.published_at }}\n\n{{$json.text.slice(0, 6000)}}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You analyze articles for Global Affairs Canada. Return JSON only.\n\n- credibility_label: 1-5, how reliable the source/article seems.\n- relevance_score: 1-5, relevance to Canada-China commercial opportunities.\n- relevance_justification_en and summary_en: English only.\n- claims: only facts the article actually states about one of the opportunities below. If none, return an empty array. Never invent claims.\n- opportunity_id must be one of the IDs below.\n- support_quote: a short exact quote from the article, in its original language.\n- locator: e.g. \"paragraph 2\".\n\nOpportunities (ID | title | stage | what counts as a claim):\n{{ $json.opportunities }}\n\nRules:\n- credibility_label and relevance_score are INTEGERS from 1 to 5 (never decimals, never 0-1).\n- If the article does not clearly concern one of the listed opportunities, return \"claims\": [].\n- A claim must state a concrete development (deal, tariff change, contract, shipment, financing) that is specifically about the listed opportunity. General policy statements, commitments and cooperation language are NOT claims. When in doubt, return \"claims\": [].\n- Never create new opportunity IDs.\n- event_date must be YYYY-MM-DD, or null if unknown.\n- dimension must be a specific state of the opportunity, e.g. contract_stage, tariff_status, volume, financing_status.\n- locator is a paragraph number, e.g. \"paragraph 3\"."
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        3792,
+        -704
+      ],
+      "id": "95a1a3e8-317f-4aa3-8443-09d89bd512b2",
+      "name": "Basic LLM Chain",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5:7b",
+        "options": {
+          "temperature": 0.1,
+          "numCtx": 8000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmOllama",
+      "typeVersion": 1,
+      "position": [
+        3792,
+        -464
+      ],
+      "id": "7442c3c8-ba18-4fbe-bc70-d43efad4a156",
+      "name": "Ollama Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "3Imcw2D0zXMIff9g",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"credibility_label\": { \"type\": \"integer\", \"minimum\": 1, \"maximum\": 5 },\n    \"relevance_score\": { \"type\": \"integer\", \"minimum\": 1, \"maximum\": 5 },\n    \"relevance_justification_en\": { \"type\": \"string\" },\n    \"summary_en\": { \"type\": \"string\" },\n    \"claims\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"opportunity_id\": { \"type\": \"string\", \"enum\": [\"E01\",\"E02\",\"E03\",\"E04\",\"E05\",\"E06\",\"E07\",\"E08\",\"F01\",\"F02\",\"F03\",\"F04\",\"F05\",\"F06\",\"F07\",\"F08\",\"P01\",\"P02\",\"P03\",\"P04\",\"P05\",\"P06\",\"B01\",\"B02\",\"B03\",\"B04\",\"B05\",\"B06\"] },\n          \"dimension\": { \"type\": \"string\" },\n          \"value\": { \"type\": \"string\" },\n          \"claim_en\": { \"type\": \"string\" },\n          \"event_date\": { \"type\":[\"string\", \"null\"] },\n          \"locator\": { \"type\": \"string\" },\n          \"support_quote\": { \"type\": \"string\" }\n        },\n        \"required\": [\"opportunity_id\",\"dimension\",\"value\",\"claim_en\",\"locator\",\"support_quote\"]\n      }\n    }\n  },\n  \"required\": [\"credibility_label\",\"relevance_score\",\"relevance_justification_en\",\"summary_en\",\"claims\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        3936,
+        -480
+      ],
+      "id": "88c70335-8cb9-4f99-81d0-6548a2870cef",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const VALID = new Set($('Load Opportunities').item.json.valid_ids);\n\nconst doc = $('Insert document').item.json;   // source_id, url, hash, text\nconst out = $json.output || {};\nconst norm = s => String(s || '').replace(/\\s+/g, ' ').trim();\nconst docText = norm(doc.text);\n\nconst rawClaims = Array.isArray(out.claims) ? out.claims : [];\nconst claims = rawClaims.filter(c =>\n  VALID.has(c.opportunity_id) &&            // real opportunity ID\n  norm(c.support_quote).length > 0 &&\n  docText.includes(norm(c.support_quote))   // quote really appears in the article\n);\n\nconst score = n => {\n  n = Math.round(Number(n));\n  return Number.isFinite(n) ? Math.min(5, Math.max(1, n)) : null;\n};\n\nreturn { json: {\n  source_id: doc.source_id,\n  url: doc.url,\n  hash: doc.hash,\n  credibility_score: score(out.credibility_label),\n  relevance_score: score(out.relevance_score),\n  relevance_justification_en: out.relevance_justification_en || '',\n  summary_en: out.summary_en || '',\n  claims_json: JSON.stringify(claims),\n  claims_dropped: rawClaims.length - claims.length,\n  analyzed_at: $now.toISO()\n}};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4144,
+        -704
+      ],
+      "id": "d4eb3a40-3cc6-4474-a497-43337aa8d44f",
+      "name": "Verify AI Claims"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "ai_claims",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "source_id": "={{ $json.source_id }}",
+            "url": "={{ $json.url }}",
+            "hash": "={{ $json.hash }}",
+            "credibility_score": "={{ $json.credibility_score }}",
+            "relevance_score": "={{ $json.relevance_score }}",
+            "relevance_justification_en": "={{ $json.relevance_justification_en}}",
+            "summary_en": "={{ $json.summary_en }}",
+            "claims_json": "={{ $json.claims_json }}",
+            "claims_dropped": "={{ $json.claims_dropped }}",
+            "analyzed_at": "={{ $json.analyzed_at }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "source_id",
+              "displayName": "source_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "url",
+              "displayName": "url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "hash",
+              "displayName": "hash",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "credibility_score",
+              "displayName": "credibility_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "relevance_score",
+              "displayName": "relevance_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "relevance_justification_en",
+              "displayName": "relevance_justification_en",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "summary_en",
+              "displayName": "summary_en",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "claims_json",
+              "displayName": "claims_json",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "claims_dropped",
+              "displayName": "claims_dropped",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "analyzed_at",
+              "displayName": "analyzed_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4368,
+        -704
+      ],
+      "id": "364737d5-d2b5-46d1-ad7d-0301fe7c9fb6",
+      "name": "Insert AI Claim"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/home/node/.n8n-files/data/source_registry.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        432,
+        -416
+      ],
+      "id": "6e65a0e2-b5c1-4cf8-949a-f0b1d4097140",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "binaryPropertyName": "=data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.2,
+      "position": [
+        656,
+        -416
+      ],
+      "id": "b164856c-109a-4d08-a9a4-b57c8e319159",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "maxItems": 2
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1104,
+        -416
+      ],
+      "id": "0bdd3449-897b-45dd-b718-cba93580de8e",
+      "name": "Limit1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        -416
+      ],
+      "id": "f73fec19-8bd7-4b2d-bfef-5ded33810561",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/home/node/.n8n-files/data/opportunities.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        3456,
+        -976
+      ],
+      "id": "412f5106-2dfe-4b85-89d4-73b61c046c08",
+      "name": "Read Opportunities"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.2,
+      "position": [
+        3696,
+        -1024
+      ],
+      "id": "308120f8-7e83-42d8-a8a2-f4b97e4910a0",
+      "name": "Extract Opportunities"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const doc = $('Insert document').item.json;\nconst opps = $json.data;\nconst text = opps.map(o =>\n  `${o.opportunity_id} | ${o.title} | stage: ${o.stage} | counts only if the article reports: ${o.monitor_triggers.join('; ')}`\n).join('\\n');\nreturn { json: { ...doc, opportunities: text, valid_ids: opps.map(o => o.opportunity_id) } };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3952,
+        -1024
+      ],
+      "id": "65f37139-87c7-458b-a411-0a7933b7f5ca",
+      "name": "Load Opportunities"
+    },
+    {
+      "parameters": {
+        "jsCode": "const out = [];\nfor (const item of $('Verify AI Claims').all()) {\n  const d = item.json;\n  let claims = [];\n  try { claims = JSON.parse(d.claims_json || '[]'); } catch (e) {}\n  for (const c of claims) {\n    // the model sometimes returns \"January 2026\" or \"unknown\"; keep only YYYY-MM-DD\n    const date = /^\\d{4}-\\d{2}-\\d{2}$/.test(c.event_date || '') ? c.event_date : null;\n    out.push({ json: {\n      opportunity_id: c.opportunity_id,\n      dimension: c.dimension,\n      value: c.value,\n      event_date: date,\n      claim_en: c.claim_en,\n      locator: c.locator,\n      support_quote: c.support_quote,\n      source_id: d.source_id,\n      hash: d.hash,\n      run_id: Number($execution.id)\n    }});\n  }\n}\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4544,
+        -704
+      ],
+      "id": "26cc9592-525f-4928-9d57-9e5d1871b42c",
+      "name": "Explode Claims"
+    },
+    {
+      "parameters": {
+        "operation": "rowNotExists",
+        "dataTableId": {
+          "__rl": true,
+          "value": "event",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "opportunity_id",
+              "keyValue": "={{ $json.opportunity_id }}"
+            },
+            {
+              "keyName": "dimension",
+              "keyValue": "={{ $json.dimension }}"
+            },
+            {
+              "keyName": "value",
+              "keyValue": "={{ $json.value }}"
+            },
+            {
+              "keyName": "hash",
+              "keyValue": "={{ $json.hash }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4768,
+        -704
+      ],
+      "id": "615680c6-3420-4259-a2a2-8c0a8877cf7a",
+      "name": "Dedupe Events"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "current_state",
+          "mode": "name"
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        5168,
+        -704
+      ],
+      "id": "b93b9652-9bff-4917-992f-41d5ab6040b5",
+      "name": "Get row(s)",
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 4
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json._action }}",
+                    "rightValue": "insert",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "cb593c65-db47-4011-951e-d017b6878218"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Action = Insert"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 4
+                },
+                "conditions": [
+                  {
+                    "id": "0a55b1d4-a4f3-40f7-8efe-0e34aed6c260",
+                    "leftValue": "={{ $json._action }}",
+                    "rightValue": "update",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Action = Update"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.5,
+      "position": [
+        5616,
+        -704
+      ],
+      "id": "3b943e35-3b55-4575-8603-5eadd680d3f9",
+      "name": "Switch: Whether Event Already Exists"
+    },
+    {
+      "parameters": {
+        "jsCode": "const events = $('Insert Event').all().map(i => i.json);\nconst state = {};   // key = opportunity|dimension -> current row\nfor (const i of $input.all()) {\n  const r = i.json;\n  if (r.opportunity_id) state[`${r.opportunity_id}|${r.dimension}`] = { ...r, _action: null, _prev_value: r.value, _prev_date: r.event_date };\n}\nconst day = d => (d ? String(d).slice(0, 10) : null);\n\nfor (const ev of events) {\n  const key = `${ev.opportunity_id}|${ev.dimension}`;\n  const cur = state[key];\n  const d = day(ev.event_date);\n  if (!cur) {\n    // no row yet: insert\n    state[key] = { opportunity_id: ev.opportunity_id, dimension: ev.dimension, value: ev.value,\n      event_date: ev.event_date, event_id: String(ev.id), conflict: false, conflict_value: null, _action: 'insert' };\n  } else if (d && (!day(cur.event_date) || d > day(cur.event_date))) {\n    // newer event: replace and clear any conflict\n    Object.assign(cur, { value: ev.value, event_date: ev.event_date, event_id: String(ev.id), conflict: false, conflict_value: null });\n    cur._action = cur._action || 'update';   // stays 'insert' if it was added earlier in this run\n  } else if (d && d === day(cur.event_date) && ev.value !== cur.value) {\n    // same date, different value: flag a conflict\n    Object.assign(cur, { conflict: true, conflict_value: ev.value });\n    cur._action = cur._action || 'update';\n  }\n  // older date, same value, or no date on an existing row: ignored\n}\nreturn Object.values(state).filter(r => r._action).map(r => ({ json: r }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5392,
+        -704
+      ],
+      "id": "4a812d43-1411-42e8-93c1-b1bfe8216068",
+      "name": "Determine state_change action"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "event",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "opportunity_id": "={{ $json.opportunity_id }}",
+            "dimension": "={{ $json.dimension }}",
+            "value": "={{ $json.value }}",
+            "event_date": "={{ $json.event_date }}",
+            "claim_en": "={{ $json.claim_en }}",
+            "locator": "={{ $json.locator }}",
+            "support_quote": "={{ $json.support_quote }}",
+            "source_id": "={{ $json.source_id }}",
+            "hash": "={{ $json.hash }}",
+            "run_id": "={{ $json.run_id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "opportunity_id",
+              "displayName": "opportunity_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "dimension",
+              "displayName": "dimension",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "value",
+              "displayName": "value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "event_date",
+              "displayName": "event_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "claim_en",
+              "displayName": "claim_en",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "locator",
+              "displayName": "locator",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "support_quote",
+              "displayName": "support_quote",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "source_id",
+              "displayName": "source_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "hash",
+              "displayName": "hash",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "run_id",
+              "displayName": "run_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4992,
+        -704
+      ],
+      "id": "b807230b-17c1-4f1e-9a3d-e6833e2f304b",
+      "name": "Insert Event"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "source_health",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "source_id": "={{ $json.source_id }}",
+            "success": "={{ $json.status }}",
+            "error": "={{ $('HTTP Request').item.json.error }}",
+            "checked_at": "={{ $json.checked_at }}",
+            "run_id": "={{ $json.run_id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "source_id",
+              "displayName": "source_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "success",
+              "displayName": "success",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "error",
+              "displayName": "error",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "checked_at",
+              "displayName": "checked_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "run_id",
+              "displayName": "run_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        2448,
+        -416
+      ],
+      "id": "1ed80933-e3e6-4543-8e9e-3a5c1c528c00",
+      "name": "Insert source_health (fail)"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "source_health",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "source_id": "={{ $json.source_id }}",
+            "success": "={{ $json.status }}",
+            "error": "=",
+            "checked_at": "={{ $json.checked_at }}",
+            "run_id": "={{ $json.run_id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "source_id",
+              "displayName": "source_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "success",
+              "displayName": "success",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "error",
+              "displayName": "error",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "checked_at",
+              "displayName": "checked_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "run_id",
+              "displayName": "run_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3120,
+        -512
+      ],
+      "id": "bce42428-206a-4067-9215-cd8aa0b90429",
+      "name": "Insert source_health (success)"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "current_state",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "conflict": "={{ $json.conflict }}",
+            "opportunity_id": "={{ $json.opportunity_id }}",
+            "dimension": "={{ $json.dimension }}",
+            "value": "={{ $json.value }}",
+            "event_date": "={{ $json.event_date }}",
+            "event_id": "={{ $json.event_id }}",
+            "conflict_value": "={{ $json.conflict_value }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "opportunity_id",
+              "displayName": "opportunity_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "dimension",
+              "displayName": "dimension",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "value",
+              "displayName": "value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "event_date",
+              "displayName": "event_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "event_id",
+              "displayName": "event_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "conflict",
+              "displayName": "conflict",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "conflict_value",
+              "displayName": "conflict_value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        5888,
+        -784
+      ],
+      "id": "a0ada9e1-cd81-47b7-af21-ac7c0cb7e399",
+      "name": "Insert current_state"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "current_state",
+          "mode": "name"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "conflict": "={{ $json.conflict }}",
+            "opportunity_id": "={{ $json.opportunity_id }}",
+            "dimension": "={{ $json.dimension }}",
+            "value": "={{ $json.value }}",
+            "event_date": "={{ $json.event_date }}",
+            "event_id": "={{ $json.event_id }}",
+            "conflict_value": "={{ $json.conflict_value }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "opportunity_id",
+              "displayName": "opportunity_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "dimension",
+              "displayName": "dimension",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "value",
+              "displayName": "value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "event_date",
+              "displayName": "event_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "event_id",
+              "displayName": "event_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "conflict",
+              "displayName": "conflict",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "conflict_value",
+              "displayName": "conflict_value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        5888,
+        -608
+      ],
+      "id": "1dbe0537-0400-43f3-a897-e12667d7cc0d",
+      "name": "Update current_state"
+    },
+    {
+      "parameters": {
+        "jsCode": "const events = Object.fromEntries($('Insert Event').all().map(i => [String(i.json.id), i.json]));\nconst changes = $input.all().map(i => i.json).filter(c => c.opportunity_id);\nconst day = d => (d ? String(d).slice(0, 10) : 'date unknown');\n\nconst item = c => {\n  const ev = events[c.event_id] || {};\n  const prev = c._action === 'insert' ? 'none (first record)' : `${c._prev_value} (${day(c._prev_date)})`;\n  return [\n    `- **${c.opportunity_id}** | ${c.dimension}: ${c.value}`,\n    `  - **Previous:** ${prev}`,\n    `  - **Evidence (${day(c.event_date)}):** ${ev.claim_en || 'n/a'} [${ev.source_id || '?'}; ${ev.locator || 'no locator'}]`,\n    `  - **Quote:** \"${ev.support_quote || ''}\"`,\n    c.conflict ? `  - **CONFLICT:** another source reports \"${c.conflict_value}\" on the same date.` : null,\n    `  - **Review:** verify against the primary source before treating this as current.`,\n  ].filter(Boolean).join('\\n');\n};\n\nconst section = (title, items) => items.length ? `## ${title} (${items.length})\\n\\n${items.map(item).join('\\n\\n')}` : null;\n\nconst conflicts = changes.filter(c => c.conflict);\nconst rest = changes.filter(c => !c.conflict);\nconst newLeads = rest.filter(c => c._action === 'insert');\nconst updates = rest.filter(c => c._action === 'update');\n\nconst parts = [\n  `# Daily change note`,\n  `**As of ${$now.toISODate()}.** VALIDATION DRAFT: claims are AI-extracted and unreviewed. Not for distribution.`,\n  `**Summary:** ${newLeads.length} new, ${updates.length} updated, ${conflicts.length} conflicts.`,\n  section('Conflicts needing review', conflicts),\n  section('New leads', newLeads),\n  section('Material updates', updates),\n  changes.length ? null : `_No state changes this run. This is not \"no change\" if any source failed._`,\n].filter(Boolean);\n\nreturn [{ json: { filename: `change_note_${$now.toFormat('yyyy-MM-dd_HHmm')}.md`, markdown: parts.join('\\n\\n') + '\\n' } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5616,
+        -384
+      ],
+      "id": "93485eb8-7780-43e0-b227-1ed12cafbdc3",
+      "name": "Build Change Note",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "markdown",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.2,
+      "position": [
+        5824,
+        -384
+      ],
+      "id": "32350897-a785-4dcd-a533-257ba788547e",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=/home/node/.n8n-files/output/{{ $('Build Change Note').item.json.filename }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        6016,
+        -384
+      ],
+      "id": "ea037cd0-3c56-4a47-9a3b-69a40eaf491f",
+      "name": "Write Change Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields (Error)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Prepare Fetch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields (Error)": {
+      "main": [
+        [
+          {
+            "node": "Insert source_health (fail)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields (Success)": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Parse Dates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "If row does not exist",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Insert source_health (success)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Dates": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields (Success)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert document": {
+      "main": [
+        [
+          {
+            "node": "Read Opportunities",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If row does not exist": {
+      "main": [
+        [
+          {
+            "node": "Insert document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Fetch": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Prepare Fetch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Verify AI Claims",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify AI Claims": {
+      "main": [
+        [
+          {
+            "node": "Insert AI Claim",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert AI Claim": {
+      "main": [
+        [
+          {
+            "node": "Explode Claims",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Opportunities": {
+      "main": [
+        [
+          {
+            "node": "Extract Opportunities",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Opportunities": {
+      "main": [
+        [
+          {
+            "node": "Load Opportunities",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Opportunities": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Explode Claims": {
+      "main": [
+        [
+          {
+            "node": "Dedupe Events",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dedupe Events": {
+      "main": [
+        [
+          {
+            "node": "Insert Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s)": {
+      "main": [
+        [
+          {
+            "node": "Determine state_change action",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch: Whether Event Already Exists": {
+      "main": [
+        [
+          {
+            "node": "Insert current_state",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update current_state",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Determine state_change action": {
+      "main": [
+        [
+          {
+            "node": "Switch: Whether Event Already Exists",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Build Change Note",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Event": {
+      "main": [
+        [
+          {
+            "node": "Get row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert current_state": {
+      "main": [
+        []
+      ]
+    },
+    "Build Change Note": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Write Change Note",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": true
+  },
+  "versionId": "d0573a35-7c14-4ef5-a882-91f690e24805",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "86d52c477a440e9807353990487e44faa1c26d489b108abb8d239344dc7ac7bd"
+  },
+  "nodeGroups": [],
+  "id": "mYVR08y62Yh5Qfls",
+  "tags": []
+}

@@ -1,0 +1,20 @@
+TABLE: current_state
+Purpose: Keeps the latest known value for each opportunity and dimension, and flags conflicting reports.
+Implementation: n8n data table "current_state" (created by setup_tables; written by "Insert current_state" and "Update current_state", decided by the "Determine state_change action" Code node).
+
+Columns
+  opportunity_id  text     one of the 28 opportunities
+  dimension       text     aspect being tracked (e.g. contract_stage)
+  value           text     the latest known value
+  event_date      date     date of the event that set this value (may be empty)
+  event_id        text     id of the row in event that set this value
+  conflict        boolean  true if two sources disagree on the same date
+  conflict_value  text     the competing value when conflict is true
+
+Rules
+  - One row per opportunity_id + dimension (enforced by the Code node, not by the database).
+  - No row yet: insert.
+  - New event with a later date: update the value and clear any conflict.
+  - Same date but a different value: set conflict = true and store conflict_value.
+  - Older event, identical value, or an event with no date for an existing row: ignored.
+  - Rows that change are listed in the daily change note.

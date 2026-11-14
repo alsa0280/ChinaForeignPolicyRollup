@@ -1,0 +1,17 @@
+FILE: data/source_registry.json  (the "source registry")
+Purpose: The list of sources the workflow collects from, with a status saying whether each is approved or only a candidate.
+Implementation: static JSON file in the repo, read by the workflow at the start of each run (not an n8n table); edited by people and changed through pull requests.
+
+Fields (one object per source)
+  id        text  source ID (e.g. S01; candidates look like BRAVE-R001-1)
+  method    text  "page" (fetch one page) or "rss" (read a feed)
+  url       text  where to fetch
+  type      text  kind of source (e.g. official)
+  title     text  human-readable title
+  language  text  article language (e.g. en)
+  status    text  "approved" or "candidate"
+
+Rules
+  - Built from the client's source_catalog.csv (55 approved sources) plus
+    candidates found by search (e.g. Brave results) awaiting human approval.
+  - The workflow does not change this file.

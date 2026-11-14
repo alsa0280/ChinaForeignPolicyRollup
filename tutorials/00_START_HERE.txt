@@ -1,0 +1,19 @@
+TUTORIALS: running the n8n prototype
+====================================
+
+Follow these in order (mostly downloads).
+
+  01_install_docker.txt           Install Docker Desktop
+  02_install_ollama.txt           Install Ollama and download the AI model (you can choose a more complex model instead)
+  03_start_n8n.txt                Start n8n in Docker with the repo mounted
+  04_import_and_run_workflow.txt  Import the workflows and run them
+  05_troubleshooting.txt          Common errors and fixes
+
+What you are setting up
+-----------------------
+  - Docker runs n8n (the workflow tool) in a container.
+  - Ollama runs the AI model on your own computer. No data leaves it.
+  - This repo is shared with n8n so the workflow can read its config files
+    (data/) and write its results (output/).
+
+Written for Windows (PowerShell). macOS/Linux differences are noted.

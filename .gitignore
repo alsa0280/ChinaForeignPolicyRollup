@@ -3,3 +3,6 @@ demo-output/
 __pycache__/
 .env
 .idea/
+output/*
+!output/.gitkeep
+*.pyc

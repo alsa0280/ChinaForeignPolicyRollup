@@ -1,0 +1,18 @@
+TABLE: documents
+Purpose: One row per article fetched from a source, used to avoid processing the same article twice.
+Implementation: n8n data table "documents" (created by setup_tables; written by the "Insert document" node).
+
+Columns
+  source_id     text    ID of the source in source_registry.json (e.g. S01)
+  url           text    page that was fetched
+  fetched_at    date    when it was fetched
+  status        text    "ok" for a successful fetch
+  title         text    page title
+  published_at  date    publication date parsed from the page (may be empty)
+  text          text    cleaned article text (paragraphs joined by newlines)
+  hash          text    hash of the text; identifies duplicates
+
+Rules
+  - Duplicates are detected on "hash": an article is only inserted if no row
+    with the same hash exists ("If row does not exist" node).
+  - Feeds ai_claims (the AI reads this text).
