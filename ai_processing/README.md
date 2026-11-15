@@ -39,10 +39,10 @@ Tests never call Ollama; the model is replaced by a fake client.
 | Path | Purpose |
 |---|---|
 | `config.py` | Settings from environment variables |
-| `reference_data.py` | Loads `data/opportunities.json` and `data/source_registry.json` |
-| `validation.py` | Deterministic checks on model output |
-| `credibility.py` | Source-type base score plus bounded model adjustment |
-| `language.py` | Rule-based language detection |
+| `models.py` | Data models (`Document`, `Opportunity`, `Claim`) and fixed lists (`Dimension`, `FocusArea`, `Language`, `ClaimType`, `DropReason`) |
+| `reference_data.py` | `ReferenceData`: opportunities and source types from `data/` |
+| `validation.py` | `ClaimValidator` and `KeyTermMatcher`: checks on model output |
+| `credibility.py` | `CredibilityScorer`: source-type base score plus bounded model adjustment |
 | `llm_client.py` | Ollama client |
 | `processor.py` | One document in, one `ai_claims` row out |
 | `app.py` | FastAPI endpoints `/health` and `/process` |
@@ -59,4 +59,38 @@ Shared files used by this service live in the repo-wide folders:
 
 ## Status
 
-Structure only. Each module is implemented in its own step, with tests.
+| Module | Status |
+|---|---|
+| `models.py`, `reference_data.py`, `validation.py`, `credibility.py` | Implemented and tested |
+| `config.py`, `llm_client.py`, `processor.py`, `app.py` | Not implemented yet |
+
+## Validation rules
+
+A claim from the model is kept only if all of these hold; otherwise it is dropped
+and counted in `claims_dropped` with a reason.
+
+| Check | Reason when it fails |
+|---|---|
+| Required fields present (`opportunity_id`, `dimension`, `value`, `claim_en`, `locator`, `support_quote`) | `missing_field` |
+| `opportunity_id` exists in `data/opportunities.json` | `unknown_opportunity` |
+| `dimension` is in the fixed list | `invalid_dimension` |
+| `support_quote` appears word for word in the article | `quote_not_in_text` |
+| `locator` is `paragraph N` | `bad_locator` |
+| The quote (or its English rendering) shares a key term with the opportunity's title or monitor triggers | `unrelated_to_opportunity` |
+
+Other rules: if the quote sits in a different paragraph than the locator says, the
+locator is corrected and the correction is noted in `uncertainty` (paragraphs are the
+non-empty lines of the text); scores are rounded and clamped to 1-5; an invalid
+`event_date`, or one later than `fetched_at`, becomes `null`; a `claim_type` other
+than `reported_fact` is stored as `analysis`.
+
+The key-term check is a heuristic: it compares 5-letter word stems and ignores
+stopwords and words common to most trade news (agreement, country, investment...).
+It removes clearly unrelated claims but does not prove that a claim is correct.
+
+## Test fixtures
+
+`tests/fixtures/documents/` holds documents in the `document` format. `s01_excerpt`
+and `s02_excerpt` contain only the sentences quoted in the n8n run of 2026-11-14;
+files named `*_synthetic` were written for tests and are not real news. The R001
+document is built at test time from `data/samples/R001.txt`.

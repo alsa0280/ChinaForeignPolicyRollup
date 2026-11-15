@@ -1,0 +1,11 @@
+{
+  "_note": "Synthetic document whose text extraction returned nothing.",
+  "source_id": "TEST-EMPTY-1",
+  "url": "https://example.test/empty",
+  "fetched_at": "2026-11-12T00:00:00Z",
+  "status": "ok",
+  "title": "Page with no extracted text",
+  "published_at": null,
+  "text": "",
+  "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
