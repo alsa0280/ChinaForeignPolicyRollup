@@ -1,0 +1,140 @@
+{
+  "_note": "The 9 claims from the n8n run of 2026-11-14. Each quote is real but is attached to an unrelated opportunity ID.",
+  "cases": [
+    {
+      "document": "s01_excerpt",
+      "claim": {
+        "opportunity_id": "E01",
+        "dimension": "other",
+        "value": "reported",
+        "claim_en": "Both sides commit to revitalizing the Joint Economic and Trade Commission (JETC), led respectively by GAC and MOFCOM, and having the JETC continue to serve as the main channel for promoting economic and trade cooperation and resolving economic and trade differences between the two countries.",
+        "event_date": null,
+        "locator": "paragraph 1",
+        "support_quote": "Both sides commit to revitalizing the Joint Economic and Trade Commission (JETC), led respectively by GAC and MOFCOM, and having the JETC continue to serve as the main channel for promoting economic and trade cooperation and resolving economic and trade differences between the two countries.",
+        "support_quote_en": null,
+        "claim_type": "reported_fact",
+        "uncertainty": []
+      }
+    },
+    {
+      "document": "s01_excerpt",
+      "claim": {
+        "opportunity_id": "E02",
+        "dimension": "other",
+        "value": "reported",
+        "claim_en": "Both sides reaffirm the importance of working within the framework of the WTO rules, and addressing challenges through cooperation and constructive consultation, and endeavour to avoid the imposition of unilateral measures in the future.",
+        "event_date": null,
+        "locator": "paragraph 2",
+        "support_quote": "Both sides reaffirm the importance of working within the framework of the WTO rules, and addressing challenges through cooperation and constructive consultation, and endeavour to avoid the imposition of unilateral measures in the future.",
+        "support_quote_en": null,
+        "claim_type": "reported_fact",
+        "uncertainty": []
+      }
+    },
+    {
+      "document": "s01_excerpt",
+      "claim": {
+        "opportunity_id": "E03",
+        "dimension": "other",
+        "value": "reported",
+        "claim_en": "Both sides commit to maintaining open channels of communication to resolve outstanding issues regarding trade in agricultural products.",
+        "event_date": null,
+        "locator": "paragraph 3",
+        "support_quote": "Both sides commit to maintaining open channels of communication to resolve outstanding issues regarding trade in agricultural products.",
+        "support_quote_en": null,
+        "claim_type": "reported_fact",
+        "uncertainty": []
+      }
+    },
+    {
+      "document": "s01_excerpt",
+      "claim": {
+        "opportunity_id": "E04",
+        "dimension": "other",
+        "value": "reported",
+        "claim_en": "Both sides commit to jointly promoting sustainable trade and investment, including trade in green products.",
+        "event_date": null,
+        "locator": "paragraph 4",
+        "support_quote": "Both sides commit to jointly promoting sustainable trade and investment, including trade in green products.",
+        "support_quote_en": null,
+        "claim_type": "reported_fact",
+        "uncertainty": []
+      }
+    },
+    {
+      "document": "s01_excerpt",
+      "claim": {
+        "opportunity_id": "E05",
+        "dimension": "other",
+        "value": "reported",
+        "claim_en": "Both sides commit to discussing opportunities to enhance dialogue on E-commerce, including through a potential MOU.",
+        "event_date": null,
+        "locator": "paragraph 5",
+        "support_quote": "Both sides commit to discussing opportunities to enhance dialogue on E-commerce, including through a potential MOU.",
+        "support_quote_en": null,
+        "claim_type": "reported_fact",
+        "uncertainty": []
+      }
+    },
+    {
+      "document": "s02_excerpt",
+      "claim": {
+        "opportunity_id": "P01",
+        "dimension": "other",
+        "value": "reported",
+        "claim_en": "To forge a new Canada-China partnership, the Prime Minister, Mark Carney, visited Beijing, the People’s Republic of China, this week.",
+        "event_date": null,
+        "locator": "paragraph 1",
+        "support_quote": "To forge a new Canada-China partnership, the Prime Minister, Mark Carney, visited Beijing, the People’s Republic of China, this week.",
+        "support_quote_en": null,
+        "claim_type": "reported_fact",
+        "uncertainty": []
+      }
+    },
+    {
+      "document": "s02_excerpt",
+      "claim": {
+        "opportunity_id": "P02",
+        "dimension": "other",
+        "value": "reported",
+        "claim_en": "Central to this new partnership is an agreement to collaborate in energy, clean technology, and climate competitiveness.",
+        "event_date": null,
+        "locator": "paragraph 2",
+        "support_quote": "Central to this new partnership is an agreement to collaborate in energy, clean technology, and climate competitiveness.",
+        "support_quote_en": null,
+        "claim_type": "reported_fact",
+        "uncertainty": []
+      }
+    },
+    {
+      "document": "s02_excerpt",
+      "claim": {
+        "opportunity_id": "P03",
+        "dimension": "other",
+        "value": "reported",
+        "claim_en": "Canada will allow up to 49,000 Chinese electric vehicles (EV) into the Canadian market, with the most-favoured-nation tariff rate of 6.1%.",
+        "event_date": null,
+        "locator": "paragraph 3",
+        "support_quote": "Canada will allow up to 49,000 Chinese electric vehicles (EV) into the Canadian market, with the most-favoured-nation tariff rate of 6.1%.",
+        "support_quote_en": null,
+        "claim_type": "reported_fact",
+        "uncertainty": []
+      }
+    },
+    {
+      "document": "s02_excerpt",
+      "claim": {
+        "opportunity_id": "P05",
+        "dimension": "other",
+        "value": "reported",
+        "claim_en": "Canada has set an ambitious goal to increase exports to China by 50% by 2030.",
+        "event_date": null,
+        "locator": "paragraph 4",
+        "support_quote": "Canada has set an ambitious goal to increase exports to China by 50% by 2030.",
+        "support_quote_en": null,
+        "claim_type": "reported_fact",
+        "uncertainty": []
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@ demo-output/
 __pycache__/
 .env
 .idea/
+.vscode/
 output/*
 !output/.gitkeep
 *.pyc

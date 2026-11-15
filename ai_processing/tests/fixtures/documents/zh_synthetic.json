@@ -1,0 +1,11 @@
+{
+  "_note": "Synthetic Mandarin text written for tests. Not a real news item.",
+  "source_id": "TEST-ZH-1",
+  "url": "https://example.test/zh-canola",
+  "fetched_at": "2026-11-12T00:00:00Z",
+  "status": "ok",
+  "title": "加拿大油菜籽粕关税减免延长（测试样本）",
+  "published_at": "2026-11-10",
+  "text": "【测试样本，非真实新闻】\n中加双方同意将对加拿大油菜籽粕、豌豆、龙虾和螃蟹的关税减免措施延长至2028年底。\n该措施由双方经贸部门共同宣布，具体实施细则尚未公布。",
+  "hash": "afc9a884aa8720ddbeb6208384a0d51ab0f4cc7c2ec1d0d892d3670833457cd9"
+}

@@ -1,0 +1,22 @@
+{
+  "source_id": "BRAVE-R001-1",
+  "url": "https://www.newsweek.com/canada-deal-china-donald-trump-drops-trade-demand-12692790",
+  "hash": "7313606c588012f7bebfc4aa9fec88c221e68aecca74f6b4e431b24c6537f32d",
+  "credibility_score": 4,
+  "relevance_score": 4,
+  "relevance_justification_en": "The article reports on new economic agreements between Canada and China, which involve financial cooperation and the extension of existing trade deals, aligning with the opportunity to extend relief for canola meal, peas, lobster, and crab.",
+  "summary_en": "Canada has signed new economic agreements with China, focusing on financial cooperation and extending existing trade deals until 2028.",
+  "claims_json": "[{\"opportunity_id\": \"F01\", \"dimension\": \"expiry_date\", \"value\": \"extension until 2028\", \"claim_en\": \"The existing trade deal for canola meal, peas, lobster, and crab will be extended until the end of 2028.\", \"event_date\": null, \"locator\": \"paragraph 8\", \"support_quote\": \"China will continue charging lower tariffs on Canadian products, including canola meal, peas, lobster and crab.\", \"support_quote_en\": null, \"claim_type\": \"reported_fact\", \"uncertainty\": [\"locator corrected from paragraph 5 to paragraph 8\"]}]",
+  "claims_dropped": 0,
+  "analyzed_at": "2026-11-15T02:00:22+00:00",
+  "language": "en",
+  "title_en": "Canada Signs New Deals With China After Trump Drops Trade Demand",
+  "focus_area": "Food security",
+  "credibility_reason": "reported source (base 3); +1: Cites specific officials and provides details on the agreements.",
+  "uncertain": true,
+  "red_flags": "[\"text truncated\"]",
+  "ai_status": "ok",
+  "ai_error": "",
+  "model": "qwen2.5:7b",
+  "prompt_version": "assess_v1"
+}
