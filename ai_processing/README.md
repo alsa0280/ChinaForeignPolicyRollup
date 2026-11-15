@@ -32,6 +32,22 @@ python -m ai_processing.run_r001
 It processes Daniele's R001 sample and saves the `ai_claims` row to
 `docs/ai_processing/R001_output.json` (about 5-7 minutes on a laptop without a GPU).
 
+## Run the API (for n8n)
+
+From the repo root, with Ollama running:
+
+```powershell
+uvicorn ai_processing.app:app --host 0.0.0.0 --port 8000
+```
+
+| Endpoint | What it does |
+|---|---|
+| `GET /health` | Returns `{"status": "ok", "model": ..., "prompt_version": ...}` |
+| `POST /process` | Body: one `document` (JSON). Returns the `ai_claims` row. A body without `source_id` gets `422` |
+
+`--host 0.0.0.0` lets n8n, running in Docker, reach the service at
+`http://host.docker.internal:8000`. Interactive docs: http://localhost:8000/docs.
+
 ## Run the tests
 
 From the repo root:
@@ -65,7 +81,7 @@ Tests never call Ollama; `tests/fakes.py` provides a fake model.
 | `checks.py` | Rule-based checks: `ClaimValidator`, `KeyTermMatcher`, `CredibilityScorer` |
 | `processor.py` | `Processor`: one document in, one `ai_claims` row out |
 | `run_r001.py` | Processes the shared article (R001) and saves the output |
-| `app.py` | FastAPI endpoints `/health` and `/process` (not implemented yet) |
+| `app.py` | FastAPI endpoints `/health` and `/process`, called by n8n |
 | `tests/` | One test file per module, shared fixtures (`conftest.py`) and the fake model (`fakes.py`) |
 
 Shared files in the repo-wide folders:
