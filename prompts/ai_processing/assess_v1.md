@@ -75,6 +75,15 @@ Rules:
   happened. The publication date is not the event date. Otherwise `null`.
 - `support_quote`: copy the exact words from ONE paragraph, in the article's
   original language, up to 240 characters. Do not translate, shorten or fix it.
+- The `support_quote` alone must prove the claim. A reader who sees only the
+  quote must be able to confirm `value` and `claim_en`. If it cannot, do not
+  return the claim.
+- Use each quote for one claim only. Never reuse the same quote for another
+  opportunity.
+- Do not combine facts from different sentences or paragraphs into one claim.
+- Report only what changed or was decided. If the article says something stays
+  the same (for example a tariff that remains in place), that is not a removal
+  or a new development.
 - `support_quote_en`: the English translation of `support_quote` when the
   article is not in English; otherwise `null`.
 - `locator`: `paragraph N`, where N is the number of the paragraph you quoted.
