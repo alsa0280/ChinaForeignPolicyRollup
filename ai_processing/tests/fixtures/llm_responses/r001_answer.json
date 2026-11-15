@@ -1,0 +1,27 @@
+{
+  "_note": "Model answer for R001, based on the real qwen2.5:7b answer of 2026-11-14 with the opportunity ID set to F01. It keeps the model's real mistakes: wrong focus area, publication date as event date, and an English translation of an English quote.",
+  "language": "en",
+  "title_en": "Canada Signs New Deals With China After Trump Drops Trade Demand",
+  "summary_en": "Canada has signed new economic agreements with China, focusing on financial cooperation and extending existing trade deals.",
+  "focus_area": "Energy supply",
+  "relevance_score": 4,
+  "relevance_justification_en": "The agreements extend existing trade deals with lower tariffs on Canadian products.",
+  "credibility_adjustment": 1,
+  "credibility_reason": "cites named ministers and figures",
+  "uncertain": false,
+  "red_flags": [],
+  "claims": [
+    {
+      "opportunity_id": "F01",
+      "dimension": "tariff_or_quota",
+      "value": "extension until end of 2028",
+      "claim_en": "China will extend the existing trade deal until the end of 2028, allowing lower tariffs on Canadian products.",
+      "event_date": "2026-11-11",
+      "locator": "paragraph 2",
+      "support_quote": "China will continue charging lower tariffs on Canadian products, including canola meal, peas, lobster and crab.",
+      "support_quote_en": "China will continue charging lower tariffs on Canadian products, including canola meal, peas, lobster and crab.",
+      "claim_type": "reported_fact",
+      "uncertainty": []
+    }
+  ]
+}

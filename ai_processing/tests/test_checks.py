@@ -1,16 +1,18 @@
-"""Tests for validation.py."""
+"""Tests for checks.py: claim validation and credibility."""
 import pytest
 
-from ai_processing.models import Claim, DropReason
-from ai_processing.validation import (
+from ai_processing.checks import (
     ClaimValidator,
+    Credibility,
+    CredibilityScorer,
     KeyTermMatcher,
-    clamp_score,
     parse_event_date,
     quote_in_text,
 )
+from ai_processing.models import Claim, DropReason
 
 R001_QUOTE = "Both countries have also agreed to extend an existing trade deal until the end of 2028."
+CURLY_APOSTROPHE = "\u2019"
 
 
 def f01_claim(**changes) -> dict:
@@ -33,16 +35,11 @@ def validator(reference):
     return ClaimValidator(reference)
 
 
-# --- helpers -------------------------------------------------------------------
+# --- helpers ---------------------------------------------------------------------
 
 def test_quote_ignores_whitespace_and_curly_quotes():
-    assert quote_in_text("the People's Republic", "the People\u2019s \n Republic")
+    assert quote_in_text("the People's Republic", f"the People{CURLY_APOSTROPHE}s \n Republic")
     assert not quote_in_text("signed a contract", "They agreed to extend the deal.")
-
-
-@pytest.mark.parametrize(("value", "expected"), [(9, 5), (0, 1), (3.6, 4), ("high", None)])
-def test_clamp_score(value, expected):
-    assert clamp_score(value) == expected
 
 
 def test_event_date_must_be_valid_and_not_after_fetch():
@@ -57,7 +54,7 @@ def test_key_terms_match_variants_and_skip_generic_words():
     assert matcher.terms("agreement countries investment market") == set()
 
 
-# --- ClaimValidator --------------------------------------------------------------
+# --- ClaimValidator ----------------------------------------------------------------
 
 def test_valid_claim_is_kept_and_cleaned(validator, r001_document):
     claim = validator.validate_one(f01_claim(locator="Paragraph 08"), r001_document)
@@ -107,3 +104,28 @@ def test_validate_reports_kept_and_dropped(validator, r001_document):
     result = validator.validate([f01_claim(), "junk"], r001_document)
     assert [claim.opportunity_id for claim in result.kept] == ["F01"]
     assert [(d.index, d.reason) for d in result.dropped] == [(1, DropReason.NOT_AN_OBJECT)]
+
+
+# --- CredibilityScorer -----------------------------------------------------------
+
+@pytest.mark.parametrize(("source_type", "expected"), [("official", 4), ("reported", 3), ("blog", 2)])
+def test_base_score_by_source_type(source_type, expected):
+    assert CredibilityScorer().score(source_type).score == expected
+
+
+def test_adjustment_with_reason_is_applied():
+    assert CredibilityScorer().score("reported", 1, "cites named ministers") == Credibility(
+        4, "reported source (base 3); +1: cites named ministers"
+    )
+
+
+@pytest.mark.parametrize(("adjustment", "reason"), [(2, "too big"), ("1", "wrong type"), (1, "")])
+def test_invalid_adjustment_is_ignored(adjustment, reason):
+    result = CredibilityScorer().score("company", adjustment, reason)
+    assert result.score == 3
+    assert "model adjustment ignored" in result.reason
+
+
+def test_score_stays_between_1_and_5():
+    assert CredibilityScorer().score("blog", -1, "anonymous").score == 1
+    assert CredibilityScorer().score("official", 1, "legal notice").score == 5

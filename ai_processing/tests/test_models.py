@@ -2,7 +2,7 @@
 import pytest
 from pydantic import ValidationError
 
-from ai_processing.models import Claim, ClaimType, FocusArea, Language
+from ai_processing.models import SCHEMA_FILE, Claim, ClaimType, FocusArea, Language, LLMAssessment
 
 VALID_CLAIM = {
     "opportunity_id": "F01",
@@ -39,3 +39,27 @@ def test_claim_cleans_loose_model_output():
     assert claim.claim_type is ClaimType.ANALYSIS
     assert claim.uncertainty == []
     assert claim.support_quote_en is None
+
+
+def test_llm_assessment_cleans_answer_and_keeps_claims_apart():
+    raw = {
+        "language": "Mandarin",
+        "focus_area": "food security",
+        "relevance_score": 9,
+        "credibility_adjustment": "1",
+        "red_flags": "none",
+        "claims": [{"opportunity_id": "F01"}, "junk"],
+    }
+    assessment, raw_claims = LLMAssessment.from_model_output(raw)
+    assert assessment.language is Language.MANDARIN
+    assert assessment.focus_area is FocusArea.FOOD
+    assert assessment.relevance_score == 5
+    assert assessment.credibility_adjustment == 0
+    assert assessment.red_flags == []
+    assert raw_claims == [{"opportunity_id": "F01"}, "junk"]
+
+
+def test_schema_file_matches_models():
+    """schemas/ai_processing/llm_output.schema.json must be regenerated after model changes:
+    python -m ai_processing.models"""
+    assert SCHEMA_FILE.read_text(encoding="utf-8") == LLMAssessment.json_schema_text()

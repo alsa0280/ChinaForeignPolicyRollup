@@ -1,10 +1,13 @@
-"""Checks applied to the model output before anything is stored.
+"""Rule-based checks on the model's answer (no AI here).
 
-ClaimValidator keeps a claim only if it has the expected fields, refers to a
-known opportunity, quotes the article word for word, points to a paragraph and
-relates to the opportunity it is attached to. Dropped claims carry a reason.
+- ClaimValidator keeps a claim only if it has the expected fields, refers to a
+  known opportunity, quotes the article word for word, points to a paragraph and
+  relates to the opportunity it is attached to. Dropped claims carry a reason.
+- CredibilityScorer combines a base score from the source type with the model's
+  bounded adjustment.
 """
 import re
+from dataclasses import dataclass
 from datetime import date
 
 from pydantic import ValidationError
@@ -17,7 +20,7 @@ from ai_processing.models import (
     Opportunity,
     ValidationResult,
 )
-from ai_processing.reference_data import ReferenceData
+from ai_processing.config import ReferenceData
 
 _QUOTE_CHARS = str.maketrans(
     {"\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"'}
@@ -45,14 +48,9 @@ def paragraph_number(locator) -> int | None:
     return int(match.group(1)) if match else None
 
 
-def find_paragraph(quote, text) -> int | None:
-    """Number (from 1) of the paragraph that contains the quote.
-
-    Paragraphs are the non-empty lines of the text, as the n8n workflow joins
-    paragraphs with line breaks. Returns None if no single paragraph contains it.
-    """
+def find_paragraph(quote, paragraphs: list[str]) -> int | None:
+    """Number (from 1) of the paragraph that contains the quote, or None."""
     needle = normalize_text(quote)
-    paragraphs = [line for line in str(text or "").split("\n") if line.strip()]
     for number, paragraph in enumerate(paragraphs, start=1):
         if needle and needle in normalize_text(paragraph):
             return number
@@ -74,17 +72,6 @@ def parse_event_date(value, fetched_at=None) -> str | None:
     if fetched and event > fetched:
         return None
     return value
-
-
-def clamp_score(value) -> int | None:
-    """Round a score to an integer between 1 and 5; None if it is not a number."""
-    if isinstance(value, bool):
-        return None
-    try:
-        number = round(float(value))
-    except (TypeError, ValueError, OverflowError):
-        return None
-    return min(5, max(1, number))
 
 
 # --- quote / opportunity relation --------------------------------------------
@@ -197,7 +184,7 @@ class ClaimValidator:
         A wrong paragraph number is corrected (and noted in uncertainty) rather
         than dropping a claim whose quote is real.
         """
-        actual = find_paragraph(claim.support_quote, document.text)
+        actual = find_paragraph(claim.support_quote, document.paragraphs)
         if actual is None or actual == stated:
             return {"locator": f"paragraph {stated}"}
         note = f"locator corrected from paragraph {stated} to paragraph {actual}"
@@ -219,3 +206,51 @@ class ClaimValidator:
         # the model's paraphrase in claim_en.
         evidence = f"{claim.support_quote} {claim.support_quote_en or ''}"
         return self.matcher.relates(evidence, opportunity)
+
+
+# --- credibility ------------------------------------------------------------
+
+BASE_SCORES = {"official": 4, "company": 3, "reported": 3}
+UNKNOWN_BASE = 2
+ALLOWED_ADJUSTMENTS = (-1, 0, 1)
+
+
+@dataclass(frozen=True)
+class Credibility:
+    score: int
+    reason: str
+
+
+class CredibilityScorer:
+    def score(self, source_type, adjustment=0, reason: str = "") -> Credibility:
+        """Combine the base score of the source type with the model's adjustment."""
+        base = self.base_score(source_type)
+        explanation = f"{self._label(source_type)} source (base {base})"
+
+        if not self._is_usable(adjustment, reason):
+            if adjustment not in (0, None):
+                explanation += "; model adjustment ignored"
+            return Credibility(base, explanation)
+
+        if adjustment == 0:
+            return Credibility(base, explanation)
+
+        final = min(5, max(1, base + adjustment))
+        return Credibility(final, f"{explanation}; {adjustment:+d}: {reason.strip()}")
+
+    def base_score(self, source_type) -> int:
+        return BASE_SCORES.get(self._key(source_type), UNKNOWN_BASE)
+
+    def _label(self, source_type) -> str:
+        key = self._key(source_type)
+        return key if key in BASE_SCORES else "unknown"
+
+    def _is_usable(self, adjustment, reason) -> bool:
+        """An adjustment counts only if it is -1, 0 or +1 and a non-zero one has a reason."""
+        if type(adjustment) is not int or adjustment not in ALLOWED_ADJUSTMENTS:
+            return False
+        return adjustment == 0 or bool(str(reason or "").strip())
+
+    @staticmethod
+    def _key(source_type) -> str:
+        return str(source_type or "").strip().lower()

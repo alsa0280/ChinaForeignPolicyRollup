@@ -1,0 +1,215 @@
+{
+  "$defs": {
+    "Claim": {
+      "description": "One claim extracted by the model about one opportunity.",
+      "properties": {
+        "opportunity_id": {
+          "minLength": 1,
+          "title": "Opportunity Id",
+          "type": "string"
+        },
+        "dimension": {
+          "$ref": "#/$defs/Dimension"
+        },
+        "value": {
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "claim_en": {
+          "minLength": 1,
+          "title": "Claim En",
+          "type": "string"
+        },
+        "event_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Event Date"
+        },
+        "locator": {
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        },
+        "support_quote": {
+          "minLength": 1,
+          "title": "Support Quote",
+          "type": "string"
+        },
+        "support_quote_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Support Quote En"
+        },
+        "claim_type": {
+          "$ref": "#/$defs/ClaimType",
+          "default": "analysis"
+        },
+        "uncertainty": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Uncertainty",
+          "type": "array"
+        }
+      },
+      "required": [
+        "opportunity_id",
+        "dimension",
+        "value",
+        "claim_en",
+        "event_date",
+        "locator",
+        "support_quote",
+        "support_quote_en",
+        "claim_type",
+        "uncertainty"
+      ],
+      "title": "Claim",
+      "type": "object"
+    },
+    "ClaimType": {
+      "enum": [
+        "reported_fact",
+        "analysis"
+      ],
+      "title": "ClaimType",
+      "type": "string"
+    },
+    "Dimension": {
+      "description": "Which aspect of an opportunity a claim reports on.",
+      "enum": [
+        "contract_stage",
+        "market_access_status",
+        "tariff_or_quota",
+        "expiry_date",
+        "amount",
+        "capacity_or_volume",
+        "regulatory_approval",
+        "counterparty",
+        "other"
+      ],
+      "title": "Dimension",
+      "type": "string"
+    },
+    "FocusArea": {
+      "description": "The four working areas of the starter kit, or none.",
+      "enum": [
+        "Energy supply",
+        "Food security",
+        "Payments, settlement, and investment",
+        "Pharmaceuticals and biotech",
+        "none"
+      ],
+      "title": "FocusArea",
+      "type": "string"
+    },
+    "Language": {
+      "description": "Language of an article, as reported by the model.",
+      "enum": [
+        "en",
+        "zh",
+        "fr",
+        "other"
+      ],
+      "title": "Language",
+      "type": "string"
+    }
+  },
+  "description": "What the model returns for one article (claims are validated separately).",
+  "properties": {
+    "language": {
+      "$ref": "#/$defs/Language",
+      "default": "other"
+    },
+    "title_en": {
+      "default": "",
+      "title": "Title En",
+      "type": "string"
+    },
+    "summary_en": {
+      "default": "",
+      "title": "Summary En",
+      "type": "string"
+    },
+    "focus_area": {
+      "$ref": "#/$defs/FocusArea",
+      "default": "none"
+    },
+    "relevance_score": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Relevance Score"
+    },
+    "relevance_justification_en": {
+      "default": "",
+      "title": "Relevance Justification En",
+      "type": "string"
+    },
+    "credibility_adjustment": {
+      "default": 0,
+      "title": "Credibility Adjustment",
+      "type": "integer"
+    },
+    "credibility_reason": {
+      "default": "",
+      "title": "Credibility Reason",
+      "type": "string"
+    },
+    "uncertain": {
+      "default": false,
+      "title": "Uncertain",
+      "type": "boolean"
+    },
+    "red_flags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Red Flags",
+      "type": "array"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/Claim"
+      },
+      "title": "Claims",
+      "type": "array"
+    }
+  },
+  "title": "LLMAssessment",
+  "type": "object",
+  "required": [
+    "language",
+    "title_en",
+    "summary_en",
+    "focus_area",
+    "relevance_score",
+    "relevance_justification_en",
+    "credibility_adjustment",
+    "credibility_reason",
+    "uncertain",
+    "red_flags",
+    "claims"
+  ]
+}
