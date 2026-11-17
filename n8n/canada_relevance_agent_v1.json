@@ -1,0 +1,260 @@
+{
+  "name": "Canada-Relevance AI News Agent",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -528,
+        16
+      ],
+      "id": "f387a7d7-e028-4dae-9843-320ff9aa35ac",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8b3c541a-c4c9-4d6b-ad0f-11d16ef97183",
+              "name": "topic",
+              "value": "Agentic Ai",
+              "type": "string"
+            },
+            {
+              "id": "2ec719d7-4a1a-44de-8c72-7ca76c0b3f0a",
+              "name": "language",
+              "value": "English",
+              "type": "string"
+            },
+            {
+              "id": "efd4b044-8de2-4955-9617-7d155ecbbe7e",
+              "name": "articles",
+              "value": 5,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -368,
+        16
+      ],
+      "id": "c35a2f8f-52bd-4ab4-a230-60c051d2e97f",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "url": "https://www.cbc.ca/webfeed/rss/rss-technology",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -192,
+        16
+      ],
+      "id": "ad613373-c1b5-49a6-9fc2-ee818c59e8e6",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "maxItems": 5
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        16
+      ],
+      "id": "da48d861-041f-4c17-9de0-1db5b5dea69c",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst items = $input.all();\n\nreturn items.map(item => {\n  const article = item.json;\n\n  const cleanText = String(\n    article.contentSnippet || article.content || \"\"\n  )\n    .replace(/<[^>]*>/g, \" \")\n    .replace(/&nbsp;/g, \" \")\n    .replace(/&amp;/g, \"&\")\n    .replace(/\\s+/g, \" \")\n    .trim()\n    .slice(0, 1500);\n\n  return {\n    json: {\n      title: article.title || \"\",\n      source: \"CBC Technology\",\n      url: article.link || \"\",\n      published: article.isoDate || article.pubDate || \"\",\n      description: cleanText\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        160,
+        16
+      ],
+      "id": "28881ffb-ce14-4888-8d23-0b29c6067ffe",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "llama3.2:3b",
+          "mode": "list",
+          "cachedResultName": "llama3.2:3b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are a news analyst preparing a technology news digest for Canadian readers.\n\nEvaluate the article below and classify its relevance to Canada using exactly one of these categories:\n\nHigh: Directly concerns Canada, Canadian people, businesses, institutions, laws, or policies.\nMedium: An international development with a clear or plausible significant impact on Canada.\nLow: A general or international topic without a specific Canadian connection.\n\nUse only the supplied article information. Do not invent Canadian connections.\n\nReturn exactly these three lines:\nRelevance: High, Medium, or Low\nReason: One sentence explaining the classification.\nSummary: One or two concise factual sentences.\n\nArticle title: {{ $json.title }}\nArticle description: {{ $json.description }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "typeVersion": 1,
+      "position": [
+        -352,
+        -192
+      ],
+      "id": "048e8ff9-1a1b-4e5f-8928-b815299f84d4",
+      "name": "Message a model"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst results = $input.all();\nconst articles = $(\"Code in JavaScript\").all();\n\nconst entries = results.map((item, i) => {\n  const article = articles[i]?.json || {};\n  const response = String(item.json.content || \"\");\n\n  const relevance =\n    response.match(/Relevance:\\s*(High|Medium|Low)/i)?.[1] || \"Low\";\n\n  const reason =\n    response.match(/Reason:\\s*([\\s\\S]*?)(?=\\nSummary:|$)/i)?.[1]?.trim() || \"\";\n\n  const summary =\n    response.match(/Summary:\\s*([\\s\\S]*)/i)?.[1]?.trim() || \"\";\n\n  return {\n    ...article,\n    relevance,\n    reason,\n    summary\n  };\n});\n\nconst rank = { High: 0, Medium: 1, Low: 2 };\n\nentries.sort((a, b) =>\n  rank[a.relevance] - rank[b.relevance]\n);\n\nconst lines = [\n  \"# Canada-Relevance AI News Digest\",\n  \"\",\n  `Generated: ${new Date().toISOString()}`,\n  \"\",\n  `Articles analyzed: ${entries.length}`,\n  \"\"\n];\n\nfor (const entry of entries) {\n  lines.push(\n    `## ${entry.relevance} — ${entry.title}`,\n    \"\",\n    `**Source:** ${entry.source}`,\n    \"\",\n    `**Published:** ${entry.published}`,\n    \"\",\n    `**Summary:** ${entry.summary}`,\n    \"\",\n    `**Canadian relevance:** ${entry.reason}`,\n    \"\",\n    `**Original article:** ${entry.url}`,\n    \"\",\n    \"---\",\n    \"\"\n  );\n}\n\nreturn [{\n  json: {\n    markdown: lines.join(\"\\n\"),\n    articles: entries\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -64,
+        -192
+      ],
+      "id": "ae00ed32-c027-4d63-88e2-6bea628c669d",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "markdown",
+        "options": {
+          "fileName": "canada-news-digest.md"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.2,
+      "position": [
+        96,
+        -192
+      ],
+      "id": "73e8ad66-8c57-446d-b468-eb214895d06e",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "/files/canada-news-digest.md",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        320,
+        -192
+      ],
+      "id": "d79167ca-2ded-4137-bc33-3e5a9afe0798",
+      "name": "Read/Write Files from Disk"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "nodeGroups": [],
+  "tags": []
+}
